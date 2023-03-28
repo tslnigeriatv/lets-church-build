@@ -1,0 +1,10 @@
+export { default as Login } from "./Auth/Login";
+export { default as Register } from "./Auth/Register";
+export { default as Welcome } from "./Welcome";
+export { default as ChangePassword } from "./ChangePassword";
+export { default as Home } from "./Home/Home";
+export { default as ResetPassword } from "./Auth/ResetPassword";
+export { default as Videos } from "./Videos/Videos";
+export { default as Notification } from "./Notification/Notification";
+export { default as Gifts } from "./Gifts/Gifts";
+export { default as NewPost } from "./NewPost";
