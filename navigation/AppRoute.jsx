@@ -94,7 +94,6 @@ const HomeApp = () => {
           tabBarStyle: {
             elevation: 0,
             // backgroundColor: "#F3F3F3",
-            height: 81,
             borderTopRightRadius: 21,
             borderTopLeftRadius: 21,
             paddingHorizontal: 20,
