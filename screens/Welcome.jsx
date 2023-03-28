@@ -9,6 +9,8 @@ import {
 import React, { useRef } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "react-native";
+import { images } from "../assets/images";
+import { colors } from "../components/shared";
 
 const { width, height } = Dimensions.get("screen");
 
@@ -34,6 +36,7 @@ const Indicator = ({ scrollX }) => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
+        marginBottom: 30
       }}
     >
       {DATA.map((_, i) => {
@@ -46,7 +49,7 @@ const Indicator = ({ scrollX }) => {
 
         const bg = scrollX.interpolate({
           inputRange,
-          outputRange: ["#323337", "#D6D6D7", "#323337"],
+          outputRange: [colors.lightGray, colors.black, colors.lightGray],
           extrapolate: "clamp",
         });
 
@@ -74,7 +77,7 @@ const Welcome = () => {
   const scrollX = useRef(new Animated.Value(0)).current;
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.black }}>
+    <View style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar />
       <Animated.FlatList
         data={DATA}
@@ -100,27 +103,6 @@ const Welcome = () => {
       />
 
       <View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Login")}
-          style={{
-            backgroundColor: "#80D200",
-            marginHorizontal: 20,
-            paddingVertical: 15,
-            borderRadius: 8,
-            marginBottom: 10,
-          }}
-        >
-          <Text
-            style={{
-              color: colors.black,
-              textAlign: "center",
-              fontFamily: "Stem-Medium",
-              fontSize: 20,
-            }}
-          >
-            Get Started
-          </Text>
-        </TouchableOpacity>
         <Indicator scrollX={scrollX} />
       </View>
     </View>
