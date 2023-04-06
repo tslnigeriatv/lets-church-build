@@ -365,7 +365,7 @@ const DrawerNavigator = (props) => {
         drawerContentStyle: {
           display: 'none'
         }
-      })} onPress={() => props.navigation.dispatch(DrawerActions.closeDrawer())} name="Home" component={HomeApp} />
+      })} onPress={() => props.navigation.dispatch(DrawerActions.closeDrawer())} name="HomeApp" component={HomeApp} />
     </Drawer.Navigator>
   );
 }
