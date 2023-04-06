@@ -11,7 +11,7 @@ import {
   Dimensions,
   KeyboardAvoidingView
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { supportMessage } from "../../data";
@@ -50,16 +50,9 @@ function SupportMessageDetail() {
           </Pressable>
 
           <View style={{ flexDirection: "row", alignItems: "center", gap: 17 }}>
-            <Image
-              source={myChat.profile_photo}
-              style={{
-                width: 47,
-                height: 47,
-                borderRadius: 50,
-              }}
-            />
+            
             <Text style={{ fontFamily: "Montserrat_700Bold", fontSize: 20 }}>
-              Support Group
+              Support Chat
             </Text>
           </View>
 

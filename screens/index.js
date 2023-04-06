@@ -20,6 +20,7 @@ export { default as SearchPopularCategories } from "./OtherScreens/SearchPopular
 export { default as HotDealsPopularCategories } from "./OtherScreens/HotDealsPopularCategories";
 export { default as SavedDeals } from "./OtherScreens/SavedDeals";
 export { default as Transaction } from "./OtherScreens/Transaction";
+export { default as TopSearchedVideos } from "./OtherScreens/TopSearchedVideos";
 
 // Messages AND Support Team Messages Screens
 export { default as MessageList } from "./Message/MessageList";

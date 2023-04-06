@@ -4,7 +4,7 @@ import { colors, ScreenWidth } from "../../components/shared";
 import { PostCarousel } from '../../components';
 import { data } from './DevotionalData';
 
-console.log(data);
+// console.log(data);
 
 const DailyDevotional = () => {
   return (

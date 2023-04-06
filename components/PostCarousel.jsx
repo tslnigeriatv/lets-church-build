@@ -63,14 +63,14 @@ const PostCarousel = ({ item, type }) => {
 
 
   return (
-    <View style={{ minHeight: 295 }}>
+    <View style={{ height: 295 }}>
       {/* If the user wants to upload short 30mins videos, 
         I should update this code to check if the src it's getting is an image 
         or a video and render video/image comonent depending on which one it's receiving 
       */}
       <Animated.FlatList
         data={item.images}
-        style={{ width: ScreenWidth, minHeight: 295 }}
+        style={{ width: ScreenWidth, height: 295 }}
         keyExtractor={(item) => Math.random() * 100}
         horizontal={true}
         scrollEventThrottle={35}
@@ -86,13 +86,13 @@ const PostCarousel = ({ item, type }) => {
             resizeMode={"contain"}
             style={{
               width: ScreenWidth,
-              minHeight: 295,
+              height: 295,
             }}
           />
         )}
       />
       {/* Post Interactions */}
-        <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginVertical:10, alignItems: "center" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginVertical:10, marginBottom: 30, alignItems: "center" }}>
           <View style={{ flexDirection: "row", flex: 1 }}>
             {/* Like */}
               <View style={{ marginRight: 10 }}>
@@ -136,7 +136,7 @@ const PostCarousel = ({ item, type }) => {
                 {/* Comments Section */}
                 <Text style={{ fontSize: 9 }}>{item.comments.length} Comments</Text>
               </View>
-              <Pressable onPress={() => onShare(item.images[0].image)}>
+              <Pressable onPress={() => onShare("Share Me")}>
                 <Image 
                   source={images.Share}
                   resizeMode={"contain"}
@@ -171,12 +171,12 @@ const PostCarousel = ({ item, type }) => {
             vertical
             showsVerticalScrollIndicator={true}
             style={{
-              // paddingTop: 0
+              // paddingBottom: 50
               
             }}
             contentContainerStyle={{ 
               justifyContent: "flex-start", 
-              maxHeight: 200, 
+              minHeight: 200, 
             }}>
               <View style={{ 
                 width: "100%", 
@@ -230,7 +230,7 @@ const PostCarousel = ({ item, type }) => {
                 
               </View>
           </ScrollView>
-          <View style={{ width: ScreenWidth, paddingHorizontal: 20, marginTop: 30 }}>
+          <View style={{ width: ScreenWidth, paddingHorizontal: 20, marginTop: 10, paddingBottom: 30 }}>
                 <View style={{
                   flexDirection: "row",
                   width: "100%",
@@ -253,6 +253,7 @@ const PostCarousel = ({ item, type }) => {
                         marginLeft: 15
                       }}>{item?.name}</Text>
                         <TextInput 
+                        multiline
                         placeholder="Add a public comment"
                         style={{ 
                           color: "#626262", 

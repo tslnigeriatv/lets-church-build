@@ -26,7 +26,8 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction } from './screens';
+
+import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, MessageList, TopSearchedVideos, SupportTeam, SupportMessageDetail } from './screens';
 
 
 
@@ -65,3 +66,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+

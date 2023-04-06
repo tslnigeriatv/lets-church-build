@@ -55,7 +55,7 @@ const StoryWheel = () => {
                                 backgroundColor: "#F0F6F8", 
                                 width: "95%", 
                                 height: "95%",
-                                borderRadius: "50%",
+                                borderRadius: 9999,
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
