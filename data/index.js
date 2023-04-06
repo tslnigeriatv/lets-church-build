@@ -907,7 +907,7 @@ export const userFinance = {
     username: "ASHLEY DOE",
     account_balance: 430,
     account_last_digits: "******3389",
-    profile_photo: chat3,
+    profile_photo: chat1,
 
     recent_transaction: [
         {

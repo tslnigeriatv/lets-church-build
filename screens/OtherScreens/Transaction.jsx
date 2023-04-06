@@ -5,20 +5,31 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
+  Platform,
+  Dimensions
 } from "react-native";
 import React, { useState } from "react";
 import { userFinance } from "../../data";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
+
+const {width: WIDTH, height: HEIGTH } = Dimensions.get("screen");
+
+
+
 const Transaction = () => {
   const [notification, setNotification] = useState(true);
   const user = userFinance;
 
+  const horizontalPaddingFromBothSides = 10 + 10;
+  const widthOfCard = (WIDTH - horizontalPaddingFromBothSides);
+
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{flex: 1}}>
       <View
         style={{
-          flex: 0.07,
+          flex: Platform.OS == "ios" ? 0.1 : 0.15,
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -61,21 +72,22 @@ const Transaction = () => {
         </View>
       </View>
 
-      <View style={{ flex: 0.93 }}>
-        <ScrollView contentContainerStyle={{ position: "relative" }}>
+      <View style={{ flex:  Platform.OS === "ios" ? 0.9 : 0.85 }}>
+        <ScrollView contentContainerStyle={{ position: "relative", flex: 1}}>
           <View
             style={{
               position: "absolute",
               right: 0,
               left: 0,
               height: 300,
-              justifyContent: "center",
+              justifyContent: "flex-start",
               alignItems: "center",
+              paddingTop: 5
             }}
           >
             <View
               style={{
-                width: 359,
+                width: widthOfCard,
                 height: 200,
                 backgroundColor: "#F4F4F4",
                 borderRadius: 17,
@@ -149,6 +161,7 @@ const Transaction = () => {
             </View>
           </View>
         </ScrollView>
+      </View>
       </View>
     </SafeAreaView>
   );
