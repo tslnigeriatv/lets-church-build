@@ -494,18 +494,7 @@ const MessageScreens = () => {
 
 const AppRoot = () => {
 
-  // const params = {
-  //   type: 'user',
-  //   // add more parameters as needed
-  // };
-
-  // useEffect(() => {
-  //   client.fetch(`*[_type == "user"]`, {query: params})
-  //   .then(data => console.log(data))
-  //   .catch(error => console.log(error))
-  // }, [])
-
-  // let accessToken = "sfsdfafaf";
+  
   const [userToken, setUserToken] = useState("jgkghgksgkgshggsg");
 
 
