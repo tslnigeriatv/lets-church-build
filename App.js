@@ -28,10 +28,14 @@ import {
 } from '@expo-google-fonts/montserrat';
 
 import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, MessageList, TopSearchedVideos, SupportTeam, SupportMessageDetail } from './screens';
-
-
+import { useEffect } from 'react';
+import { client } from './lib/client';
+import { userQuery } from './lib/data/getUser';
 
 export default function App() {
+
+
+  
 
   let [fontsLoaded] = useFonts({
     Montserrat_100Thin,

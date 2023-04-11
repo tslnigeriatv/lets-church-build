@@ -19,6 +19,7 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@reduxjs/toolkit": "^1.9.3",
+    "@sanity/client": "^5.4.2",
     "expo": "~48.0.9",
     "expo-app-loading": "^2.1.1",
     "expo-clipboard": "~4.1.2",
@@ -35,7 +36,8 @@
     "react-native-screens": "~3.20.0",
     "react-native-tab-view": "^3.5.1",
     "react-native-web": "~0.18.10",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "url-search-params": "^1.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
