@@ -510,10 +510,10 @@ const AppRoot = () => {
 
   useEffect(() => {
     client.fetch(`*[_type == "user"]`)
-    .then(data => console.log(data))
-    .catch(error => console.log(error))
+    // .then(data => console.log(data))
+    // .catch(error => console.log(error))
 
-    getFireBaseData();
+    // getFireBaseData();
   }, [])
 
   const getFireBaseData = async () => {
@@ -525,7 +525,7 @@ const AppRoot = () => {
   
 
   // let accessToken = "sfsdfafaf";
-  const [userToken, setUserToken] = useState("jgkghgksgkgshggsg");
+  const [userToken, setUserToken] = useState("");
 
 
     return !userToken ? (

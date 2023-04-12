@@ -5,7 +5,41 @@ import { images } from '../../assets/images';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from '../../lib/firebaseConfig';
+
+// import { AppAuth, Google } from 'expo-app-auth';
+// import * as GoogleSignIn from 'expo-google-sign-in';
+
+
 const RenderAuthFooter = ({ type }) => {
+
+  const provider = new GoogleAuthProvider();
+
+  const GOOGLESignIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      }).catch((error) => {
+        // Handle Errors here.
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        // The email of the user's account used.
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  }
+
+
+
   return (
     <View style={{ marginTop: 30 }}>
       <TouchableOpacity
@@ -35,7 +69,7 @@ const RenderAuthFooter = ({ type }) => {
             <Image source={images.Twitter} resizeMode={"contain"} style={{ width: 61, height: 61 }} />
           </TouchableWithoutFeedback>
 
-          <TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={GOOGLESignIn}>
             <Image source={images.Google} resizeMode={"contain"} style={{ width: 61, height: 61 }} />
           </TouchableWithoutFeedback>
         </View>
@@ -133,8 +167,8 @@ const MyTabs = () => {
     }}
     >
       <Tab.Screen options={{
-      }} name="Login" component={LoginScreen} />
-      <Tab.Screen name="Register" component={RegisterScreen} />
+      }} name="LoginScreen" component={LoginScreen} />
+      <Tab.Screen name="RegisterScreen" component={RegisterScreen} />
     </Tab.Navigator>
   );
 }
