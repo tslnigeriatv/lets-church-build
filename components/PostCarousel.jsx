@@ -77,7 +77,7 @@ const PostCarousel = ({ item, type }) => {
       {/* Slider */}
       <Animated.FlatList
         data={item.images}
-        style={{ width: ScreenWidth, minHeight: 295, maxHeight: 295 }}
+        style={{ width: ScreenWidth, minHeight: 295 }}
         keyExtractor={(item) => Math.random() * 100}
         horizontal={true}
         scrollEventThrottle={35}
@@ -94,13 +94,12 @@ const PostCarousel = ({ item, type }) => {
             style={{
               width: ScreenWidth,
               minHeight: 295,
-              maxHeight: 295
             }}
           />
         )}
       />
       {/* Post Interactions */}
-        <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginVertical:10, alignItems: "center" }}>
+        <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginVertical:10, marginBottom: 30, alignItems: "center" }}>
           <View style={{ flexDirection: "row", flex: 1 }}>
             {/* Like */}
               <View style={{ marginRight: 10 }}>
@@ -144,7 +143,7 @@ const PostCarousel = ({ item, type }) => {
                 {/* Comments Section */}
                 <Text style={{ fontSize: 11 }}>{item.comments.length} Comments</Text>
               </View>
-              <Pressable onPress={() => onShare(item.images[0].image)}>
+              <Pressable onPress={() => onShare("Share Me")}>
                 <Image 
                   source={images.Share}
                   resizeMode={"contain"}
@@ -171,122 +170,116 @@ const PostCarousel = ({ item, type }) => {
             </Pressable>
           </View>
         </View>
-        <View style={{ maxHeight: item?.comments?.length == 1 ? 120 : item?.comments.length * 60 }}>
-          {type === "devotional" && <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold", marginHorizontal: 20 }}>{item.excert}</Text>}
-          {showComs && (
-            <Center>
-                <Actionsheet isOpen={showComs} onClose={onClose}>
-                    <Actionsheet.Content>
-                    <>
-                      <ScrollView 
-                      vertical
-                      showsVerticalScrollIndicator={true}
-                      style={{
-                        // paddingTop: 0
-                        maxHeight: item?.comments?.length == 1 ? 120 : item?.comments.length * 60
-                      }}
-                      contentContainerStyle={{ 
+        <View>
+        {type === "devotional" && <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold", marginVertical: 18, marginHorizontal: 20 }}>{item.excert}</Text>}
+        {showComs && (
+          <>
+            <ScrollView 
+            vertical
+            showsVerticalScrollIndicator={true}
+            style={{
+              // paddingTop: 0
+              
+            }}
+            contentContainerStyle={{ 
+              justifyContent: "flex-start", 
+              maxHeight: 200, 
+            }}>
+              <View style={{ 
+                width: "100%", 
+                alignItems: "center", 
+                paddingBottom: 10
+              }}>
+                {item?.comments.map((comment) => (
+                  <View key={comment.id}>
+                    <View style={{ 
+                        flexDirection: "row", 
+                        marginTop: 10,
+                        width: ScreenWidth,
                         justifyContent: "flex-start",
-                        
+                        paddingHorizontal: 20, 
                       }}>
                         <View style={{ 
-                          width: "100%", 
-                          alignItems: "center", 
-                          paddingBottom: 10
+                          marginTop: 20,
+                          marginRight: 15
                         }}>
-                          {item?.comments.map((comment) => (
-                            <View key={comment.id}>
-                              <View style={{ 
-                                  flexDirection: "row", 
-                                  marginTop: 10,
-                                  width: ScreenWidth,
-                                  justifyContent: "flex-start",
-                                  paddingHorizontal: 20, 
-                                }}>
-                                  <View style={{
-                                    marginTop: 20,
-                                    marginRight: 15
-                                  }}>
-                                    <Image 
-                                      source={comment.image}
-                                      resizeMode="cover"
-                                      style={{ width: 32, height: 32, borderRadius: 32 / 2 }} />
-                                  </View>
-                                  <View style={{ justifyContent: "space-between", width: "100%" }}>
-                                    <Text style={{
-                                      color: "#000000", 
-                                      fontSize: 10, 
-                                      fontFamily: "Montserrat_700Bold", 
-                                      marginLeft: 15
-                                    }}>{comment?.friend}</Text>
-                                      <Text style={{ 
-                                        color: "#626262", 
-                                        maxWidth: "60%", 
-                                        paddingHorizontal: 11, 
-                                        paddingVertical: 4,
-                                        marginVertical: 5,
-                                        fontSize: 10,
-                                        fontFamily: "Montserrat_600SemiBold",
-                                        backgroundColor: "#E9E9E9",
-                                        borderTopLeftRadius: 10,
-                                        borderBottomRightRadius: 10,
-                                        borderBottomLeftRadius: 3,
-                                        borderTopRightRadius: 3
-                                      }}>{comment.message}</Text>
-                                  </View>
-                                </View>
-                            </View>
-                          ))}
+                          <Image 
+                            source={comment.image}
+                            resizeMode="cover"
+                            style={{ width: 29, height: 29, borderRadius: 29 / 2 }} />
+                        </View>
+                        <View style={{ justifyContent: "space-between", width: "100%" }}>
+                          <Text style={{
+                            color: "#000000", 
+                            fontSize: 10, 
+                            fontFamily: "Montserrat_700Bold", 
+                            marginLeft: 15
+                          }}>{comment?.friend}</Text>
+                            <Text style={{ 
+                              color: "#626262", 
+                              maxWidth: "60%", 
+                              paddingHorizontal: 11, 
+                              paddingVertical: 4,
+                              marginVertical: 5,
+                              fontSize: 10,
+                              fontFamily: "Montserrat_600SemiBold",
+                              backgroundColor: "#E9E9E9",
+                              borderTopLeftRadius: 10,
+                              borderBottomRightRadius: 10,
+                              borderBottomLeftRadius: 3,
+                              borderTopRightRadius: 3
+                            }}>{comment.message}</Text>
+                        </View>
+                      </View>
+                  </View>
+                ))}
 
-                          
-                        </View>
-                    </ScrollView>
-                    <View style={{ width: ScreenWidth, paddingHorizontal: 20, paddingTop: 10 }}>
-                          <View style={{
-                            flexDirection: "row",
-                            width: "100%",
-                            alignItems: "flex-end"
-                          }}>
-                            <Image 
-                              source={item.profilePoto} 
-                              style={{
-                                width: 29,
-                                height: 29,
-                                borderRadius: 29 / 2,
-                                marginRight: 20
-                              }}
-                            />
-                              <View style={{ justifyContent: "space-between", width: "100%" }}>
-                                <Text style={{
-                                  color: "#000000", 
-                                  fontSize: 10, 
-                                  fontFamily: "Montserrat_700Bold", 
-                                  marginLeft: 15
-                                }}>{item?.name}</Text>
-                                  <TextInput 
-                                  placeholder="Add a public comment"
-                                  style={{ 
-                                    color: "#626262", 
-                                    maxWidth: "60%", 
-                                    paddingHorizontal: 11, 
-                                    paddingVertical: 4,
-                                    marginVertical: 5,
-                                    fontSize: 10,
-                                    fontFamily: "Montserrat_600SemiBold",
-                                    backgroundColor: "#E9E9E9",
-                                    borderTopLeftRadius: 10,
-                                    borderBottomRightRadius: 10,
-                                    borderBottomLeftRadius: 3,
-                                    borderTopRightRadius: 3
-                                  }} />
-                              </View>
-                          </View>
-                        </View>
-                    </>
-                    </Actionsheet.Content>
-                </Actionsheet>
-            </Center>
-          )}
+                
+              </View>
+          </ScrollView>
+          <View style={{ width: ScreenWidth, paddingHorizontal: 20, marginTop: 30 }}>
+                <View style={{
+                  flexDirection: "row",
+                  width: "100%",
+                  alignItems: "flex-end"
+                }}>
+                  <Image 
+                    source={item.profilePoto} 
+                    style={{
+                      width: 29,
+                      height: 29,
+                      borderRadius: 29 / 2,
+                      marginRight: 20
+                    }}
+                  />
+                    <View style={{ justifyContent: "space-between", width: "100%" }}>
+                      <Text style={{
+                        color: "#000000", 
+                        fontSize: 10, 
+                        fontFamily: "Montserrat_700Bold", 
+                        marginLeft: 15
+                      }}>{item?.name}</Text>
+                        <TextInput 
+                        placeholder="Add a public comment"
+                        style={{ 
+                          color: "#626262", 
+                          maxWidth: "60%", 
+                          paddingHorizontal: 11, 
+                          paddingVertical: 4,
+                          marginVertical: 5,
+                          fontSize: 10,
+                          fontFamily: "Montserrat_600SemiBold",
+                          backgroundColor: "#E9E9E9",
+                          borderTopLeftRadius: 10,
+                          borderBottomRightRadius: 10,
+                          borderBottomLeftRadius: 3,
+                          borderTopRightRadius: 3
+                        }} />
+                    </View>
+                </View>
+              </View>
+          </>
+        )}
         </View>
     </View>
   );

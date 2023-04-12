@@ -1,5 +1,4 @@
-export const myNotification = [
-    {
+export const myNotification = [{
         id: 1,
         action: "follow",
         notification_message: "started following you.",
@@ -59,7 +58,7 @@ export const myNotification = [
             photo: require("./images/exphoto3.jpg"),
         },
     },
-    
+
 
 ]
 
@@ -76,14 +75,12 @@ export const chatLists = {
     name: "Jane",
     id: 827737823,
 
-    friends: [
-        {
+    friends: [{
             id: 665656767,
             name: "Nma Adamma",
             profile_photo: chat1,
             online: true,
-            messages: [
-                {
+            messages: [{
                     id: 83786652831,
                     name: "James",
                     message: "Thank you! That was very helpful!",
@@ -91,7 +88,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 2304544162,
                     name: "Me",
                     message: "Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips!  Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! ",
@@ -99,7 +96,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 3209354298,
                     name: "James",
                     message: "Thank you! That was very helpful!",
@@ -115,7 +112,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 34233454162,
                     name: "Me",
                     message: "Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips!  Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! ",
@@ -123,7 +120,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 36772329298,
                     name: "James",
                     message: "Thank you! That was very helpful!",
@@ -139,7 +136,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 23434230162,
                     name: "Me",
                     message: "Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips!  Really love your most recent photo. I’ve been trying to capture the same thing for a few months and would love some tips! ",
@@ -147,7 +144,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 3205543559298,
                     name: "James",
                     message: "Thank you! That was very helpful!",
@@ -163,15 +160,14 @@ export const chatLists = {
             name: "Will Kenny",
             profile_photo: chat2,
             online: true,
-            messages: [
-                {
+            messages: [{
                     id: 123267,
                     name: "Will Kenny",
                     message: "My photo are really fantastic, aren't they?",
                     image: chat2
 
                 },
-                {  
+                {
                     id: 228373,
                     name: "Me",
                     message: "These photos are really awesome... I know",
@@ -179,7 +175,7 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 3483343,
                     name: "Will Kenny",
                     message: "Thank you very much! love you so much",
@@ -194,8 +190,7 @@ export const chatLists = {
             name: "Beth Williams",
             profile_photo: chat3,
             online: false,
-            messages: [
-                {
+            messages: [{
                     id: 1333241,
                     name: "Beth Williams",
                     message: "The photos are undergoing production.",
@@ -203,14 +198,14 @@ export const chatLists = {
                     read: true,
 
                 },
-                {  
+                {
                     id: 2642344,
                     name: "Me",
                     message: "Please let me know when they are ready...",
                     image: chatSmall2
 
                 },
-                {  
+                {
                     id: 3323425,
                     name: "Beth Williams",
                     message: "I will. Thank you for your patience!",
@@ -226,8 +221,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -243,15 +237,15 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
                     image: chat4,
 
                 },
-                {  
+                {
                     id: 209377,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -267,8 +261,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 663273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -283,8 +277,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -300,8 +293,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -316,8 +309,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -333,8 +325,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -349,8 +341,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -366,8 +357,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -382,8 +373,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -399,8 +389,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -415,8 +405,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -432,8 +421,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -448,8 +437,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -465,8 +453,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -481,8 +469,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -498,8 +485,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -514,8 +501,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -531,8 +517,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -547,8 +533,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 237277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -564,8 +549,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -580,8 +565,7 @@ export const chatLists = {
             name: "Rev Shaw",
             profile_photo: chat4,
             online: false,
-            messages: [
-                {  
+            messages: [{
                     id: 2277,
                     name: "Me",
                     message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -597,8 +581,8 @@ export const chatLists = {
                     read: true,
 
                 },
-                
-                {  
+
+                {
                     id: 382273,
                     name: "Rev Shaw",
                     message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -620,8 +604,7 @@ export const supportMessage = {
     name: "Rev Shaw",
     profile_photo: chat4,
     online: false,
-    messages: [
-        {  
+    messages: [{
             id: 23732277,
             name: "Me",
             message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -637,8 +620,8 @@ export const supportMessage = {
             read: true,
 
         },
-        
-        {  
+
+        {
             id: 3822373,
             name: "Rev Shaw",
             message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -646,7 +629,7 @@ export const supportMessage = {
 
         },
 
-        {  
+        {
             id: 223277,
             name: "Me",
             message: "I’m looking for tips around capturing the milky way. I have a 6D with a 24-100mm",
@@ -662,8 +645,8 @@ export const supportMessage = {
             read: true,
 
         },
-        
-        {  
+
+        {
             id: 3823273,
             name: "Rev Shaw",
             message: "Wanted to ask if you’re available for a portrait shoot next week.",
@@ -676,8 +659,7 @@ export const supportMessage = {
 
 
 
-export const categoryList = [
-    {
+export const categoryList = [{
         id: 1,
         name: "Bible Club",
         icon: require("./images/com_icon1.png"),
@@ -702,8 +684,7 @@ export const categoryList = [
 
 
 
-export const communityReels = [
-    {
+export const communityReels = [{
         id: 1,
         name: "",
         post_pic: require("./images/com_status1.png"),
@@ -741,13 +722,11 @@ export const communityReels = [
     },
 ]
 
-export const communityGroups = [
-    {
+export const communityGroups = [{
         id: 10,
         name: "Multimedia",
         groupImage: require('./images/exphoto1.jpg'),
-        friendsInGroup: [
-            {
+        friendsInGroup: [{
                 id: 20,
                 name: "Annette Orator",
                 photo: require("./images/photo3.jpg"),
@@ -768,8 +747,7 @@ export const communityGroups = [
         id: 50,
         name: "Nubreeed",
         groupImage: require('./images/exphoto4.jpg'),
-        friendsInGroup: [
-            {
+        friendsInGroup: [{
                 id: 60,
                 name: "Daniella Ogbon",
                 photo: require("./images/photo4.jpg"),
@@ -790,8 +768,7 @@ export const communityGroups = [
         id: 90,
         name: "Choir",
         groupImage: require('./images/exphoto3.jpg'),
-        friendsInGroup: [
-            {
+        friendsInGroup: [{
                 id: 100,
                 name: "Daniella Ogbon",
                 photo: require("./images/photo1.jpg"),
@@ -808,13 +785,12 @@ export const communityGroups = [
             },
         ]
     },
-    
+
 
 ]
 
 
-export const popularCategoriesList = [
-    {
+export const popularCategoriesList = [{
         id: 1,
         name: "Living By The Word",
     },
@@ -850,8 +826,7 @@ export const popularCategoriesList = [
 
 
 
-export const hotDealsBookList = [
-    {
+export const hotDealsBookList = [{
         id: 1,
         name: "Living By The Word",
         author: "Pastor Jeff",
@@ -909,8 +884,7 @@ export const userFinance = {
     account_last_digits: "******3389",
     profile_photo: chat1,
 
-    recent_transaction: [
-        {
+    recent_transaction: [{
             id: 1,
             type: "TITHE",
             amoount: 100000,
@@ -939,15 +913,23 @@ export const userFinance = {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+export const userSearchedVideo = {
+    profile_photo: chat1,
+    searches: [
+        {
+            id: 20,
+            name: "SON OF MAN",
+            photo: require("./images/photo3.jpg"),
+        },
+        {
+            id: 30,
+            name: "SON OF MAN",
+            photo: require("./images/photo2.jpg"),
+        },
+        {
+            id: 40,
+            name: "SON OF MAN",
+            photo: require("./images/photo4.jpg"),
+        },
+    ]
+}

@@ -2,7 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import NewPostCopy from "./screens/NewPostCopy";
 import { NativeBaseProvider } from "native-base";
-
+import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
 import {
@@ -29,8 +29,15 @@ import {
 import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
 
 
+import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, MessageList, TopSearchedVideos, SupportTeam, SupportMessageDetail } from './screens';
+import { useEffect } from 'react';
+import { client } from './lib/client';
+import { userQuery } from './lib/data/getUser';
 
 export default function App() {
+
+
+  
 
   let [fontsLoaded] = useFonts({
     Montserrat_100Thin,
@@ -65,3 +72,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+

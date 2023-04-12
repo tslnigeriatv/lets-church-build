@@ -6,32 +6,35 @@ import {
   ScrollView,
   Image,
   Platform,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import React, { useState } from "react";
 import { userFinance } from "../../data";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { DebitCard } from "../../components";
 
-
-const {width: WIDTH, height: HEIGTH } = Dimensions.get("screen");
-
-
+const { width: WIDTH, height: HEIGTH } = Dimensions.get("screen");
 
 const Transaction = () => {
-  const [notification, setNotification] = useState(true);
+  const [notification, _] = useState(true);
+
+  const horizontalPaddingFromBothSides = 42;
+  const widthOfCard = WIDTH - horizontalPaddingFromBothSides;
+
   const user = userFinance;
 
-  const horizontalPaddingFromBothSides = 10 + 10;
-  const widthOfCard = (WIDTH - horizontalPaddingFromBothSides);
-
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{flex: 1}}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: "#fff",
+        position: "relative",
+      }}
+    >
       <View
         style={{
-          flex: Platform.OS == "ios" ? 0.1 : 0.15,
-          justifyContent: "center",
-          alignItems: "center",
+          flex: 1,
+          paddingTop: Platform.OS === "ios" ? 0 : 30,
         }}
       >
         <View
@@ -40,7 +43,8 @@ const Transaction = () => {
             justifyContent: "space-between",
             alignItems: "center",
             flexDirection: "row",
-            paddingHorizontal: 42,
+            paddingHorizontal: 21,
+            paddingVertical: 12,
           }}
         >
           <View style={{ position: "relative" }}>
@@ -58,110 +62,133 @@ const Transaction = () => {
                 }}
               />
             )}
-            <SimpleLineIcons name="grid" size={26} color="black" />
+            <SimpleLineIcons name="grid" size={22} color="black" />
           </View>
 
           <Image
             source={user.profile_photo}
             style={{
-              width: 42,
-              height: 42,
+              width: 34,
+              height: 34,
               borderRadius: 9999,
             }}
           />
         </View>
-      </View>
 
-      <View style={{ flex:  Platform.OS === "ios" ? 0.9 : 0.85 }}>
-        <ScrollView contentContainerStyle={{ position: "relative", flex: 1}}>
-          <View
-            style={{
-              position: "absolute",
-              right: 0,
-              left: 0,
-              height: 300,
-              justifyContent: "flex-start",
-              alignItems: "center",
-              paddingTop: 5
-            }}
-          >
+        {/* Scrollable View */}
+        <View style={{ flex: 1 }}>
+          <ScrollView style={{ flex: 1 }}>
             <View
               style={{
-                width: widthOfCard,
-                height: 200,
-                backgroundColor: "#F4F4F4",
-                borderRadius: 17,
-                overflow: "hidden",
-                padding: 11,
+                justifyContent: "center",
+                alignItems: "center",
+                paddingVertical: 20,
               }}
             >
-            <View style={{flexDirection: "column", justifyContent: "space-between", height: "100%"}}>
-            
-              <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                
-                <View>
-                  <View style={{ alignItems: "center", flexDirection: "row", gap: 5 }}>
-                    <Image
-                      source={require("../../assets/images/nairaSign.png")}
-                      resizeMode="cover"
-                      style={{
-                        width: 22,
-                        height: 22,
-                      }}
-                    />
-                    <Text
-                      style={{
-                        fontFamily: "Montserrat_800ExtraBold",
-                        fontSize: 19,
-                      }}
-                    >
-                      {user.account_balance}.00
-                    </Text>
-                  </View>
-                  <Text
+              <DebitCard user={user} />
+            </View>
+            <View
+              style={{
+                paddingHorizontal: horizontalPaddingFromBothSides / 2,
+              }}
+            >
+              <View
+                style={{
+                  marginBottom: 40,
+                  paddingTop: 40,
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Montserrat_600SemiBold",
+                    fontSize: 18,
+                  }}
+                >
+                  Recent Transactions
+                </Text>
+                <Text
+                  style={{
+                    fontFamily: "Montserrat_600SemiBold",
+                    fontSize: 15,
+                    color: "#F26A1D",
+                  }}
+                >
+                  View Stats
+                </Text>
+              </View>
+              {/* Start */}
+              <View>
+                {user.recent_transaction.map((transaction, index) => (
+                  <View
+                    key={transaction.id}
                     style={{
-                      color: "#5E5E5E",
-                      fontFamily: "Montserrat_400Regular",
-                      fontSize: 14,
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      flexDirection: "row",
+                      backgroundColor: "#F4F4F4",
+                      minHeight: 67,
+                      width: "100%",
+                      marginBottom: 10,
+                      borderRadius: 7,
+                      overflow: "hidden",
+                      padding: 12,
                     }}
                   >
-                    Balance
-                  </Text>
-                </View>
-
-                <View style={{gap: 11}}>
-                    <Text style={{fontFamily: "Montserrat_700Bold", fontSize: 15, color: "#000000", marginTop: 8}}>{user.username}</Text>
-                    <Image 
-                        source={require("../../assets/images/atmSteel.png")}
-                        resizeMode="cover"
+                    <View
+                      style={{
+                        alignItems: "center",
+                        flexDirection: "row",
+                        gap: 31,
+                      }}
+                    >
+                      {/* Settings Icon */}
+                      <View
                         style={{
-                            width: 33,
-                            height: 33,
-                            alignSelf: "flex-end"
+                          height: 46,
+                          width: 45,
+                          backgroundColor: "#FFFFFF",
+                          justifyContent: "center",
+                          alignItems: "center",
                         }}
-                    />
-                </View>
+                      >
+                        <Image
+                          source={require("../../assets/images/categorySettingsIcon.png")}
+                          resizeMode="cover"
+                          style={{
+                            width: 18,
+                            height: 18,
+                          }}
+                        />
+                      </View>
+                      <Text
+                        style={{
+                          fontFamily: "Montserrat_700Bold",
+                          fontSize: 13,
+                          maxWidth: 220,
+                        }}
+                      >
+                        {transaction.type}
+                      </Text>
+                    </View>
 
+                    <View style={{
+                      justifyContent: "center",
+                      alignItems: "flex-start"
+                    }}>
+                      <Text style={{textAlign: "right", alignSelf: "flex-end", color: "#F26A1D", fontFamily: "Montserrat_700Bold"}}>{transaction.amoount}.00</Text>
+                      <Text style={{textAlign: "right", alignSelf: "flex-end", fontFamily: "Montserrat_600SemiBold"}}>{transaction.date}</Text>
+                    </View>
+                    
+                  </View>
+                ))}
               </View>
 
-              {/* Here */}
-              <View style={{flexDirection: "row", justifyContent: "space-between",width: "100%", height: 20, marginBottom: 18}}>
-                <Image 
-                    source={require("../../assets/images/masterCardSymbol.png")}
-                    resizeMode="cover"
-                    style={{
-                        width: 43.5,
-                        height: 28,
-                    }}
-                />
-                <Text style={{fontFamily: "Montserrat_700Bold", fontSize: 15, color: "#000000"}}>{user.account_last_digits}</Text>
-              </View>
-
-              </View>
+              {/* End */}
             </View>
-          </View>
-        </ScrollView>
-      </View>
+          </ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   );

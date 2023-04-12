@@ -1,15 +1,22 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, Pressable, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { DrawerActions, NavigationContainer, useNavigation } from '@react-navigation/native';
+import { collection, getDocs } from "firebase/firestore";
+
+
+
+
 import { 
   createDrawerNavigator, 
   DrawerContentScrollView, 
   DrawerItem, 
   DrawerItemList 
 } from '@react-navigation/drawer';
+
+import URLSearchParams from 'url-search-params';
 
 import { 
   ChangePassword,
@@ -29,8 +36,12 @@ import {
   SupportMessageDetail,
   KidsZone
 } from "../screens/index";
+
 import { ScreenHeight, ScreenWidth } from '../components/shared';
 import { images } from '../assets/images';
+import { client } from '../lib/client';
+import { userQuery } from '../lib/data/getUser';
+import { db } from '../lib/firebaseConfig';
 
 const AppStack = createNativeStackNavigator();
 const Stack = createNativeStackNavigator();
@@ -491,8 +502,30 @@ const MessageScreens = () => {
 
 
 const AppRoot = () => {
+
+  const params = {
+    type: 'user',
+    // add more parameters as needed
+  };
+
+  useEffect(() => {
+    client.fetch(`*[_type == "user"]`)
+    // .then(data => console.log(data))
+    // .catch(error => console.log(error))
+
+    // getFireBaseData();
+  }, [])
+
+  const getFireBaseData = async () => {
+    const querySnapshot = await getDocs(collection(db, "feed"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+    });
+  }
+  
+
   // let accessToken = "sfsdfafaf";
-  const [userToken, setUserToken] = useState("jgkghgksgkgshggsg");
+  const [userToken, setUserToken] = useState("");
 
 
     return !userToken ? (
