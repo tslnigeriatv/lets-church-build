@@ -22,6 +22,9 @@ import Saved from "./saved.png";
 import Person from "./person.png";
 import Support from "./support.png";
 import Settings from "./settings.png";
+import Upload from "./upload.png";
+import Gallery from "./gallery.png";
+import Camera from "./camera.png";
 
 export const images = {
     SlideOne,
@@ -48,4 +51,7 @@ export const images = {
     Person,
     Support,
     Settings,
+    Upload,
+    Gallery,
+    Camera,
 }

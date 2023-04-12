@@ -1,6 +1,6 @@
 // import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
-import { AppRoot } from "./navigation";
+import NewPostCopy from "./screens/NewPostCopy";
 import { NativeBaseProvider } from "native-base";
 
 // Expo Google Fonts --- Montserrat
@@ -26,7 +26,7 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction } from './screens';
+import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
 
 
 
@@ -60,7 +60,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <AppRoot />
+        <NewPostCopy />
       </NativeBaseProvider>
     </NavigationContainer>
   );

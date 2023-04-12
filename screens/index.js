@@ -30,3 +30,6 @@ export { default as SupportMessageDetail } from "./Message/SupportMessageDetail"
 // Community Screens
 export { default as Community } from "./Community/Community";
 export { default as DailyDevotional } from "./Community/DailyDevotional";
+
+// Saved
+export { default as Saved } from "./Saves/Saved";

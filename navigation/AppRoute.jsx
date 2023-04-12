@@ -79,7 +79,7 @@ const CustomDrawerContent = (props) => {
       <ScrollView 
       showsVerticalScrollIndicator={false}
       style={{
-        maxHeight: ScreenHeight
+        height: ScreenHeight
       }}
         contentContainerStyle={{ 
           justifyContent: "space-between",

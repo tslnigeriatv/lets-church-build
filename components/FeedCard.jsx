@@ -44,13 +44,13 @@ const FeedCard = ({ item }) => {
                     source={images.More} 
                     resizeMode={"contain"}
                     style={{
-                        width: 18,
-                        height: 18,
+                        width: 25,
+                        height: 25,
                     }}
                 />
             </Pressable>
       </View>
-      <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold", marginVertical: 18 }}>{item.excert}</Text>
+      <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold", marginVertical: 25 }}>{item.excert}</Text>
       {/* Slides in here */}
       <PostCarousel type={"feed"} item={item} />
         {/* Action Sheet */}

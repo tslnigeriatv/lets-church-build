@@ -14,7 +14,7 @@ const StoryWheel = () => {
         data={feedData}
         style={{
             width: ScreenWidth,
-            marginVertical: 39,
+            marginVertical: 10,
             maxHeight: 84,
             marginHorizontal: 20,
         }}
@@ -27,7 +27,6 @@ const StoryWheel = () => {
             <View style={{ alignItems: "center" }}>
                 <View 
                     style={{ 
-                        position: "relative", 
                         width: 64, 
                         height: 64, 
                         borderRadius: 32, 
@@ -55,7 +54,7 @@ const StoryWheel = () => {
                                 backgroundColor: "#F0F6F8", 
                                 width: "95%", 
                                 height: "95%",
-                                borderRadius: "50%",
+                                borderRadius: 9999,
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
@@ -70,7 +69,7 @@ const StoryWheel = () => {
                             </Pressable>
                         )}
                     </View>
-                    <Text style={{ marginTop: 6, fontSize: 12, fontFamily: "Montserrat_600SemiBold", color: item.type === "me" ? colors.red : null }}>{item.type !== "me" ? item.name : "Me"}</Text>
+                    <Text style={{ marginTop: 6, fontSize: 14, fontFamily: "Montserrat_600SemiBold", color: item.type === "me" ? colors.red : null }}>{item.type !== "me" ? item.name : "Me"}</Text>
             </View>
         )}
     />
