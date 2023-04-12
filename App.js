@@ -2,7 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { AppRoot } from "./navigation";
 import { NativeBaseProvider } from "native-base";
-
+import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
 import {

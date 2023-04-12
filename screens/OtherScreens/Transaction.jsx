@@ -35,12 +35,10 @@ const Transaction = () => {
         style={{
           flex: 1,
           paddingTop: Platform.OS === "ios" ? 0 : 30,
-          // backgroundColor: "green"
         }}
       >
         <View
           style={{
-            // backgroundColor: "red",
             width: "100%",
             justifyContent: "space-between",
             alignItems: "center",
