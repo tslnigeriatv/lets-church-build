@@ -2,7 +2,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import NewPostCopy from "./screens/NewPostCopy";
 import { NativeBaseProvider } from "native-base";
-import 'react-native-url-polyfill/auto';
+import AppRoute from "./navigation/AppRoute.jsx";
+// import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
 import {
@@ -26,10 +27,9 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
+import { Home, Login } from './screens';
 
 
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, MessageList, TopSearchedVideos, SupportTeam, SupportMessageDetail } from './screens';
 import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
@@ -67,7 +67,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <NewPostCopy />
+        <AppRoute />
       </NativeBaseProvider>
     </NavigationContainer>
   );

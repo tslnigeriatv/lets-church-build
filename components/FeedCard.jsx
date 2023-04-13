@@ -3,7 +3,7 @@ import React from 'react'
 import { ScreenWidth } from './shared'
 import { images } from '../assets/images'
 import PostCarousel from './PostCarousel'
-import { Actionsheet, Box, Button, Center, useDisclose } from 'native-base'
+import { Actionsheet, Center, useDisclose } from 'native-base'
 import { onShare, copyToClipboard } from "../utils/utilities";
 
 const FeedCard = ({ item }) => {

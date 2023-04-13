@@ -90,21 +90,23 @@ const CustomDrawerContent = (props) => {
       <ScrollView 
       showsVerticalScrollIndicator={false}
       style={{
-        height: ScreenHeight
+        height: ScreenHeight,
+        paddingBottom: 30
       }}
         contentContainerStyle={{ 
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
           alignItems: "center",
           flexDirection: "column",
           marginHorizontal: 10,
-          flex: 1,
+          // flex: 1,
           height: ScreenHeight
         }}>
           <View style={{
             width: "100%",
             justifyContent: "center",
             alignItems: "center",
-            marginVertical: 33,
+            marginBottom: 20
+            // marginVertical: 33,
           }}>
             <Image 
               source={dummyProfile.profilePhoto}
@@ -122,7 +124,8 @@ const CustomDrawerContent = (props) => {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
-            marginVertical: 33
+            marginBottom: 20
+            // marginVertical: 33
           }}>
             <View style={{ 
               backgroundColor: "#F6F6F6", 
@@ -189,7 +192,8 @@ const CustomDrawerContent = (props) => {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
-            marginVertical: 33
+            marginBottom: 20
+            // marginVertical: 33
           }}>
             <View style={{ 
               backgroundColor: "#F6F6F6", 
@@ -256,7 +260,8 @@ const CustomDrawerContent = (props) => {
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
-            marginVertical: 33
+            marginBottom: 20
+            // marginTop: 33
           }}>
             <View style={{ 
               backgroundColor: "#F6F6F6", 
@@ -320,14 +325,13 @@ const CustomDrawerContent = (props) => {
           </View>
           <Pressable 
             style={{ 
-            width: "90%", 
+            width: "70%", 
             alignItems: "center", 
             paddingHorizontal: 10,
-            marginTop: 150,
+            marginTop: 40,
             backgroundColor: "#F0F0F0",
             flexDirection: "row",
             height: 34,
-            marginBottom: 30,
             borderRadius: 5
           }}>
             <Image
@@ -364,9 +368,9 @@ const DrawerNavigator = (props) => {
     <Drawer.Navigator 
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       initialRouteName='HomeApp'
-      defaultStatus={"open"}
+      defaultStatus={"closed"}
       screenOptions={() => ({
-        headerShown: true
+        headerShown: false
       })}
     >
       <Drawer.Screen options={() =>({
@@ -525,7 +529,7 @@ const AppRoot = () => {
   
 
   // let accessToken = "sfsdfafaf";
-  const [userToken, setUserToken] = useState("");
+  const [userToken, setUserToken] = useState("ffdsdgdgsg");
 
 
     return !userToken ? (
