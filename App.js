@@ -5,6 +5,8 @@ import { NativeBaseProvider } from "native-base";
 import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
+import AppRoot from './navigation/AppRoute'
+
 import {
   useFonts,
   Montserrat_100Thin,
@@ -26,10 +28,8 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
+// import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
 
-
-import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, MessageList, TopSearchedVideos, SupportTeam, SupportMessageDetail } from './screens';
 import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
@@ -64,7 +64,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <NewPostCopy />
+        <AppRoot />
       </NativeBaseProvider>
     </NavigationContainer>
   );
