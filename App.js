@@ -6,6 +6,8 @@ import AppRoute from "./navigation/AppRoute.jsx";
 // import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
+import AppRoot from './navigation/AppRoute'
+
 import {
   useFonts,
   Montserrat_100Thin,
@@ -33,11 +35,9 @@ import { Home, Login, Videos } from './screens';
 import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
+import { Community, HotDealsPopularCategories, KidsZone, NewPost, Saved, SavedDeals, SearchPopularCategories, Transaction } from './screens';
 
 export default function App() {
-
-
-  
 
   let [fontsLoaded] = useFonts({
     Montserrat_100Thin,
