@@ -25,6 +25,13 @@ import Settings from "./settings.png";
 import Upload from "./upload.png";
 import Gallery from "./gallery.png";
 import Camera from "./camera.png";
+import LoveFilled from "./love-filled.png";
+import LoveOutlined from "./love-outlined.png";
+import Next from "./next.png";
+import Previous from "./previous.png";
+import Repeat from "./repeat.png";
+import Pause from "./pause.png";
+import Play from "./play.png";
 
 export const images = {
     SlideOne,
@@ -54,4 +61,11 @@ export const images = {
     Upload,
     Gallery,
     Camera,
+    LoveFilled,
+    LoveOutlined,
+    Next,
+    Previous,
+    Repeat,
+    Pause,
+    Play
 }

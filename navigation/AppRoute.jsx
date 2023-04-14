@@ -368,7 +368,7 @@ const DrawerNavigator = (props) => {
     <Drawer.Navigator 
       drawerContent={(props) => <CustomDrawerContent {...props} />}
       initialRouteName='HomeApp'
-      defaultStatus={"closed"}
+      defaultStatus={"open"}
       screenOptions={() => ({
         headerShown: false
       })}
@@ -462,7 +462,7 @@ const HomeApp = () => {
             tabBarButton: (props) => <CustomTabButton {...props} />, 
             tabBarIcon: () => 
             <Ionicons name='add-sharp' size={30} color={"white"} />
-          }} name='NewPost' component={NewPost} />
+          }} name='Post' component={NewPost} />
           <Tab.Screen options={{headerShown: false, tabBarIcon: ({ focused, color, size }) => focused ? (
             <View>
               <View style={styles.activeTab}>

@@ -27,7 +27,7 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-import { Home, Login } from './screens';
+import { Home, Login, Videos } from './screens';
 
 
 import { useEffect } from 'react';
@@ -67,7 +67,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <AppRoute />
+        <Videos />
       </NativeBaseProvider>
     </NavigationContainer>
   );
