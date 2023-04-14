@@ -1,23 +1,24 @@
 import { SafeAreaView, StyleSheet, Text, View, Image, TouchableOpacity, TextInput, TouchableWithoutFeedback, ScrollView, KeyboardAvoidingView } from 'react-native'
-import React from 'react';
+import React, { useState } from 'react';
 import { colors, ScreenHeight, ScreenWidth } from '../../components/shared'
 import { images } from '../../assets/images';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithRedirect, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../lib/firebaseConfig';
 
 // import { AppAuth, Google } from 'expo-app-auth';
 // import * as GoogleSignIn from 'expo-google-sign-in';
 
 
-const RenderAuthFooter = ({ type }) => {
+const RenderAuthFooter = ({ type, method }) => {
 
   const provider = new GoogleAuthProvider();
 
   const GOOGLESignIn = () => {
-    signInWithPopup(auth, provider)
+    console.log(signInWithRedirect);
+    signInWithRedirect(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -43,6 +44,7 @@ const RenderAuthFooter = ({ type }) => {
   return (
     <View style={{ marginTop: 30 }}>
       <TouchableOpacity
+      onPress={method}
       style={{ 
         width: "100%", 
         height: 52, 
@@ -79,6 +81,25 @@ const RenderAuthFooter = ({ type }) => {
 }
 
 const LoginScreen = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const createUser = () => {
+    // const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+    });
+  }
+
+
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <KeyboardAvoidingView style={{ flex: 1, justifyContent: "flex-start", alignItems: "center", marginHorizontal: 20, marginTop: 30, backgroundColor: colors.white }}>
@@ -93,13 +114,17 @@ const LoginScreen = () => {
           {/* <Ionicons name="eye-outline" size={24} color="black" /> */}
         </View>
         <View style={{ width: "100%" }}>
-          <RenderAuthFooter type={"login"} />
+          <RenderAuthFooter type={"login"} method={createUser} />
         </View>
       </KeyboardAvoidingView>
     </ScrollView>
   )
 }
 const RegisterScreen = () => {
+
+
+
+
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <KeyboardAvoidingView style={{ flex: 1, justifyContent: "flex-start", alignItems: "center", marginHorizontal: 20, marginTop: 30, backgroundColor: colors.white }}>

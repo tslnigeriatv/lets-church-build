@@ -36,9 +36,6 @@ import { userQuery } from './lib/data/getUser';
 
 export default function App() {
 
-
-  
-
   let [fontsLoaded] = useFonts({
     Montserrat_100Thin,
     Montserrat_200ExtraLight,
