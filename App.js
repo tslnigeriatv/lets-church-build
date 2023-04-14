@@ -28,11 +28,11 @@ import {
   Montserrat_800ExtraBold_Italic,
   Montserrat_900Black_Italic,
 } from '@expo-google-fonts/montserrat';
-// import { Community, KidsZone, SearchPopularCategories, HotDealsPopularCategories, SavedDeals, Transaction, Saved, NewPost } from './screens';
 
 import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
+import { Community, HotDealsPopularCategories, KidsZone, NewPost, Saved, SavedDeals, SearchPopularCategories, Transaction } from './screens';
 
 export default function App() {
 
