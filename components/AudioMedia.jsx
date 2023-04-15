@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Button, Image, Pressable, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Button, Image, Pressable, ScrollView } from 'react-native';
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
 import { Actionsheet, Center, useDisclose } from "native-base";
 import { images } from '../assets/images';
 import { colors, ScreenHeight, ScreenWidth } from './shared';
+import { formatDuration } from '../utils/utilities';
 
 
 const AudioMedia = ({ sermon }) => {
@@ -28,9 +29,10 @@ const AudioMedia = ({ sermon }) => {
     const updatePosition = async () => {
       if (sound) {
         const status = await sound.getStatusAsync();
+        const duration = status && status.durationMillis ? status.durationMillis : null;
+        setDuration(duration);
         if (status.isLoaded && status.isPlaying) {
           setPosition(status.positionMillis);
-          console.log(status);
         }
       }
     };
@@ -49,7 +51,6 @@ const AudioMedia = ({ sermon }) => {
         
       const status = await sound?.getStatusAsync();
       const duration = status && status.durationMillis ? status.durationMillis : null;
-      console.log("duration", duration);
       setDuration(duration);
     } catch (error) {
       console.error(error);
@@ -79,16 +80,6 @@ const AudioMedia = ({ sermon }) => {
     }
   }
 
-
-  // return (
-  //   <View>
-  //     <Text>Duration: {duration ? duration : "Loading..."}</Text>
-  //     <Button title="Play" onPress={playSound} />
-  //     <Button title="Pause" onPress={pauseSound} />
-  //     <Button title="Stop" onPress={unloadSound} />
-  //   </View>
-  // )
-
   return (
     <Pressable onPress={onOpen}>
       <View style={{ 
@@ -103,7 +94,7 @@ const AudioMedia = ({ sermon }) => {
         borderStyle: "solid",
         paddingVertical: 10
       }}>
-        <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", flex: 0.6 }}>
+        <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", flex: 0.7 }}>
           <Image 
             source={sermon.thumbnail}
             resizeMode={"cover"}
@@ -114,13 +105,13 @@ const AudioMedia = ({ sermon }) => {
             }}
           />
 
-          <View>
-            <Text style={{ fontSize: 14, fontFamily: "Montserrat_700Bold" }}>His Unfailing Love</Text>
-            <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>Green Day</Text>
+          <View style={{ marginLeft: 20 }}>
+            <Text style={{ fontSize: 14, fontFamily: "Montserrat_700Bold" }}>{sermon.songTitle}</Text>
+            <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>{sermon.artist}</Text>
           </View>
         </View>
-        <View style={{ flex: 0.4, flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
-          <Text>{duration ? duration : "Time"}</Text>
+        <View style={{ flex: 0.3, flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
+          <Text>{duration ? formatDuration(duration) : "Time"}</Text>
           {like ? (
             <Pressable onPress={() => setLike(!like)} style={{ padding: 5 }}>
               <Image 
@@ -167,16 +158,28 @@ const AudioMedia = ({ sermon }) => {
                     <Text style={{ fontSize: 24, fontFamily: "Montserrat_700Bold", marginTop: 46 }}>{sermon.songTitle}</Text>
                     <Text style={{ color: "#9E9894", fontSize: 14, fontFamily: "Montserrat_700Bold", marginTop: 14 }}>{sermon.artist}</Text>
 
-                    <View style={{ marginTop: 46 }}>
+                    <View style={{ marginTop: 46, width: ScreenWidth, justifyContent: "center", alignItems: "center" }}>
                       {position !== null ? (
-                        <View style={{ width: "100%", height: 5, backgroundColor: "#EDEDED", marginTop: 40 }}>
-                          <View style={{ width: `${(position / duration) * 100}%`, height: "100%", backgroundColor: "#F26A1D" }} />
+                        <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center", width: "90%"}}>
+                          {duration ? <Text>{formatDuration(position)}</Text> : <Text>00:00</Text>}
+                          <View style={{ width: ScreenWidth - 150, height: 5, backgroundColor: "#EDEDED", borderRadius: 3 }}>
+                            <View style={{ width: `${(position / duration) * 100}%`, height: "100%", backgroundColor: "#F26A1D", borderRadius: 3 }} />
+                          </View>
+                          {duration ? <Text>{formatDuration(duration)}</Text> : <Text>00:00</Text>}
                         </View>
-                      ) : <Text>Progres...</Text>}
+                      ) : (
+                        <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center", width: "90%"}}>
+                          {<Text>00:00</Text>}
+                          <View style={{ width: ScreenWidth - 150, height: 5, backgroundColor: "#EDEDED", borderRadius: 3 }}>
+                            {/* Progress */}
+                          </View>
+                          {duration ? <Text>{formatDuration(duration)}</Text> : <Text>00:00</Text>}
+                        </View>
+                      )}
                     </View>
 
                     {/* Controls */}
-                    <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: ScreenWidth, paddingHorizontal: 20, marginTop: 68 }}>
+                    <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center", width: ScreenWidth, paddingHorizontal: 20, marginTop: 28 }}>
                       <Pressable>
                         <Image 
                           source={images.Repeat}
@@ -193,7 +196,10 @@ const AudioMedia = ({ sermon }) => {
                       </Pressable>
                       {/* Play pause */}
                       {play ? (
-                        <Pressable onPress={() => setPlay(!play)} style={{ padding: 5 }}>
+                        <Pressable onPress={() => {
+                          setPlay(!play);
+                          pauseSound();
+                        }} style={{ padding: 5 }}>
                           <Image 
                             source={images.Pause}
                             style={{
@@ -203,7 +209,10 @@ const AudioMedia = ({ sermon }) => {
                           />
                         </Pressable>
                       ) : (
-                        <Pressable onPress={() => setPlay(!play)} style={{ padding: 5 }}>
+                        <Pressable onPress={() => {
+                          setPlay(!play);
+                          playSound();
+                        }} style={{ padding: 5 }}>
                           <Image 
                           source={images.Play}
                           style={{

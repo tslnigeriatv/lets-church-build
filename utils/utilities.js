@@ -27,3 +27,15 @@ export const onShare = async (message) => {
     console.log(error.message);
   }
 };
+
+export const formatDuration = (duration) => {
+  let hours = Math.floor(duration / (60 * 60 * 1000));
+  let minutes = Math.floor((duration % (60 * 60 * 1000)) / (60 * 1000));
+  let seconds = Math.floor((duration % (60 * 1000)) / 1000);
+
+  if (hours > 0) {
+    return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  } else {
+    return `${minutes}:${String(seconds).padStart(2, '0')}`;
+  }
+}

@@ -69,18 +69,21 @@ const Videos = () => {
         {/* Tab1 */}
           <View style={{ marginTop: 35 }}>
             <CustomSlider item={slider} />
-
             <Text style={{ fontSize: 16, fontFamily: "Montserrat_700Bold", marginLeft: 20, marginTop: 20, marginBottom: 40 }}>Recently Played</Text>
+              {/* Tab 1 */}
+                <View style={{ height: ScreenHeight / 2, paddingBottom: 30 }}>
+                  <ScrollView>
+                    {/* Adio Media */}
+                    {playList.map((song, i) => (
+                      <AudioMedia key={i} sermon={song} />
+                    ))}
+                  </ScrollView>
+                </View>
+              {/* Tab2 */}
+            
+              {/* Tab3 */}
+            <View></View>
           </View>
-          {/* Tab2 */}
-          <ScrollView style={{ height: ScreenHeight / 2, paddingBottom: 30 }}>
-            {/* Adio Media */}
-            {playList.map((song, i) => (
-              <AudioMedia key={i} sermon={song} />
-            ))}
-          </ScrollView>
-          {/* Tab3 */}
-          <View></View>
       </View>
     </SafeAreaView>
   )
