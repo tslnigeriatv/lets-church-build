@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import NewPostCopy from "./screens/NewPostCopy";
 import { NativeBaseProvider } from "native-base";
 import AppRoute from "./navigation/AppRoute.jsx";
-// import 'react-native-url-polyfill/auto';
+import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
 import AppRoot from './navigation/AppRoute'
@@ -67,7 +67,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <Videos />
+        <AppRoute />
       </NativeBaseProvider>
     </NavigationContainer>
   );
