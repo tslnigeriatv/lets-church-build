@@ -67,7 +67,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <AppRoute />
+        <AppRoot />
       </NativeBaseProvider>
     </NavigationContainer>
   );
