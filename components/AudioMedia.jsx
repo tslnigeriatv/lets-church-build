@@ -13,6 +13,7 @@ const AudioMedia = ({ sermon }) => {
   const [duration, setDuration] = useState(null);
   const [like, setLike] = useState(false);
   const [play, setPlay] = useState(false);
+
   const [position, setPosition] = useState(null); // new state variable
   const {
     isOpen,
@@ -24,6 +25,12 @@ const AudioMedia = ({ sermon }) => {
     loadSound();
     return unloadSound; // This cleanup function will run when the component unmounts
   }, []);
+
+  useEffect(() => {
+    if(String(position) === String(duration)) {
+      console.log("terms met");
+    };
+  }, [position])
 
   useEffect(() => {
     const updatePosition = async () => {
@@ -142,20 +149,25 @@ const AudioMedia = ({ sermon }) => {
 
       <Center>
             <Actionsheet style={{ backgroundColor: colors.primary }} isOpen={isOpen} onClose={onClose}>
-                <Actionsheet.Content style={{ height: Platform.OS !== "web" ? null : ScreenHeight }}>
+                <Actionsheet.Content style={{ height: Platform.OS !== "web" ? ScreenHeight - 170 : ScreenHeight }}>
                   <ScrollView style={{ marginTop: 79 }} contentContainerStyle={{ alignItems: "center" }}>
-                    <View>
+                    <View style={{ 
+                      elevation: 4,
+                      width: 213, 
+                      height: 213, 
+                      borderRadius: 213 / 2, 
+                      shadowColor: "#F26A1D", 
+                      shadowOffset: { height: 4, width: 0 }, 
+                      
+                      shadowOpacity: 0.2,
+                      shadowRadius: 1.41
+                    }}>
                       <Image 
                         source={sermon.thumbnail}
                         style={{ 
                           width: 213, 
                           height: 213, 
                           borderRadius: 213 / 2, 
-                          shadowColor: "#F26A1D", 
-                          shadowOffset: { height: 4, width: 0 }, 
-                          elevation: 4,
-                          shadowOpacity: 0.2,
-                          shadowRadius: 1.41,
                         }}
                       />
                     </View>
@@ -210,6 +222,19 @@ const AudioMedia = ({ sermon }) => {
                               width: 90,
                               height: 90
                             }}
+                          />
+                        </Pressable>
+                      ) : position === duration ? (
+                        <Pressable onPress={() => {
+                          setPlay(!play);
+                          playSound();
+                        }} style={{ padding: 5 }}>
+                          <Image 
+                          source={images.Play}
+                          style={{
+                            width: 90,
+                            height: 90
+                          }}
                           />
                         </Pressable>
                       ) : (

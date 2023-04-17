@@ -78,7 +78,7 @@ const PostCarousel = ({ item, type }) => {
       {/* Slider */}
       <Animated.FlatList
         data={item.images}
-        style={{ width: ScreenWidth, minHeight: 295 }}
+        style={{ width: ScreenWidth, maxHeight: 295 }}
         keyExtractor={(item) => Math.random() * 100}
         horizontal={true}
         scrollEventThrottle={35}
@@ -91,7 +91,7 @@ const PostCarousel = ({ item, type }) => {
         renderItem={({ item }) => (
           <Image
             source={item.image}
-            resizeMode={"contain"}
+            resizeMode={"cover"}
             style={{
               width: ScreenWidth,
               minHeight: 295,
@@ -178,7 +178,8 @@ const PostCarousel = ({ item, type }) => {
             <Actionsheet isOpen={isOpen} onClose={onClose}>
                 <Actionsheet.Content>
                   <ScrollView 
-                  vertical
+                  vertical={true}
+                  horizontal={false}
                   showsVerticalScrollIndicator={true}
                   style={{
                     // paddingTop: 0
@@ -189,7 +190,7 @@ const PostCarousel = ({ item, type }) => {
                     // maxHeight: 200, 
                   }}>
                     <View style={{ 
-                      width: "100%", 
+                      width: ScreenWidth - 40, 
                       alignItems: "center", 
                       paddingBottom: 10
                     }}>
@@ -263,12 +264,14 @@ const PostCarousel = ({ item, type }) => {
                           }}>{item?.name}</Text>
                             <TextInput 
                             placeholder="Add a public comment"
+                            multiline={true}
                             style={{ 
                               color: "#626262", 
                               maxWidth: "60%", 
+                              minHeight: 30,
                               paddingHorizontal: 11, 
-                              paddingVertical: 4,
                               marginVertical: 5,
+                              paddingTop: 10,
                               fontSize: 10,
                               fontFamily: "Montserrat_600SemiBold",
                               backgroundColor: "#E9E9E9",
