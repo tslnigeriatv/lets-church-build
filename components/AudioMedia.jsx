@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Button, Image, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Pressable, ScrollView, Platform } from 'react-native';
 import { Audio } from 'expo-av';
 import { useEffect } from 'react';
 import { Actionsheet, Center, useDisclose } from "native-base";
@@ -68,6 +68,10 @@ const AudioMedia = ({ sermon }) => {
   async function playSound() {
     if (sound) {
       await sound?.playAsync();
+      await Audio?.setAudioModeAsync({
+        playbackInBackground: true,
+        playbackUsesAudioSession: true,
+      });
     } else {
       await loadSound();
       await sound?.playAsync();
@@ -138,7 +142,7 @@ const AudioMedia = ({ sermon }) => {
 
       <Center>
             <Actionsheet style={{ backgroundColor: colors.primary }} isOpen={isOpen} onClose={onClose}>
-                <Actionsheet.Content style={{ height: ScreenHeight }}>
+                <Actionsheet.Content style={{ height: Platform.OS !== "web" ? null : ScreenHeight }}>
                   <ScrollView style={{ marginTop: 79 }} contentContainerStyle={{ alignItems: "center" }}>
                     <View>
                       <Image 
