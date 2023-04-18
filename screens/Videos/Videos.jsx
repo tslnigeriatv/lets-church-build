@@ -1,8 +1,10 @@
 import { Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { colors, ScreenHeight, ScreenWidth } from '../../components/shared';
 import { AudioMedia, CustomSlider } from '../../components';
+import { client, getAudioUrl } from '../../lib/client';
+import { audioFilesQuery } from '../../lib/data/getAudioFiles';
 
 const user = {
   name: "Annette!"
@@ -20,21 +22,34 @@ const slider = {
 }
 
 const playList = [
-  { id: 1, artist: "Green Day", songTitle: "His Unfailing Love", audio: require("../../assets/media/Asake.mp3"), thumbnail: require("../../data/images/photo1.jpg") },
-  { id: 2, artist: "Day Green", songTitle: "Unfailing His Love", audio: require("../../assets/media/Davido.mp3"), thumbnail: require("../../data/images/photo2.jpg") },
-  { id: 3, artist: "Green Light", songTitle: "No Hesitation", audio: require("../../assets/media/Victony.mp3"), thumbnail: require("../../data/images/photo3.jpg") },
-  { id: 4, artist: "Light Green", songTitle: "Only Love", audio: require("../../assets/media/Victony-Soweto.mp3"), thumbnail: require("../../data/images/photo4.jpg") },
-  { id: 5, artist: "Green Day", songTitle: "His Unfailing Love", audio: require("../../assets/media/burna-1.mp3"), thumbnail: require("../../data/images/photo5.jpg") },
-  { id: 6, artist: "Day Green", songTitle: "Unfailing His Love", audio: require("../../assets/media/burna-2.mp3"), thumbnail: require("../../data/images/photo6.jpg") },
-  { id: 7, artist: "Green Light", songTitle: "No Hesitation", audio: require("../../assets/media/burna-3.mp3"), thumbnail: require("../../data/images/photo7.jpg") },
-  { id: 8, artist: "Light Green", songTitle: "Only Love", audio: require("../../assets/media/Ruger.mp3"), thumbnail: require("../../data/images/photo4.jpg") },
-  { id: 8, artist: "Light Song", songTitle: "Love Only", audio: require("../../assets/media/Moelogo.mp3"), thumbnail: require("../../data/images/photo5.jpg") },
+  { id: 1, speaker: "Green Day", title: "His Unfailing Love", audioFile: require("../../assets/media/Asake.mp3"), thumbnail: require("../../data/images/photo1.jpg") },
+  { id: 2, speaker: "Day Green", title: "Unfailing His Love", audioFile: require("../../assets/media/Davido.mp3"), thumbnail: require("../../data/images/photo2.jpg") },
+  { id: 3, speaker: "Green Light", title: "No Hesitation", audioFile: require("../../assets/media/Victony.mp3"), thumbnail: require("../../data/images/photo3.jpg") },
+  { id: 4, speaker: "Light Green", title: "Only Love", audioFile: require("../../assets/media/Victony-Soweto.mp3"), thumbnail: require("../../data/images/photo4.jpg") },
+  { id: 5, speaker: "Green Day", title: "His Unfailing Love", audioFile: require("../../assets/media/burna-1.mp3"), thumbnail: require("../../data/images/photo5.jpg") },
+  { id: 6, speaker: "Day Green", title: "Unfailing His Love", audioFile: require("../../assets/media/burna-2.mp3"), thumbnail: require("../../data/images/photo6.jpg") },
+  { id: 7, speaker: "Green Light", title: "No Hesitation", audioFile: require("../../assets/media/burna-3.mp3"), thumbnail: require("../../data/images/photo7.jpg") },
+  { id: 8, speaker: "Light Green", title: "Only Love", audioFile: require("../../assets/media/Ruger.mp3"), thumbnail: require("../../data/images/photo4.jpg") },
+  { id: 8, speaker: "Light Song", title: "Love Only", audioFile: require("../../assets/media/Moelogo.mp3"), thumbnail: require("../../data/images/photo5.jpg") },
 ]
 
 const Videos = () => {
   const [tabIndex, setTabIndex] = useState("tab1");
 
-  
+  const [audioMessages, setAudioMessages] = useState([]);
+
+  useEffect(() => {
+    client.fetch(audioFilesQuery())
+    .then(data => setAudioMessages(data))
+    .catch(error => console.log(error))
+
+  }, [])
+
+
+  audioMessages.map(item => console.log(item.imageThumbnail.asset.url))
+  audioMessages.map(item => console.log(item.audioFile.asset.url))
+
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -74,9 +89,10 @@ const Videos = () => {
             <View style={{ height: ScreenHeight / 2, paddingBottom: 30 }}>
               <ScrollView>
                 {/* Adio Media */}
-                {playList.map((song, i) => (
+                {audioMessages.map((song, i) => (
                   <AudioMedia key={i} sermon={song} />
                 ))}
+                <View style={{marginBottom: 150}} />
               </ScrollView>
             </View>
             

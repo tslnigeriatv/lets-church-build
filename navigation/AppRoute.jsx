@@ -507,18 +507,7 @@ const MessageScreens = () => {
 
 const AppRoot = () => {
 
-  const params = {
-    type: 'user',
-    // add more parameters as needed
-  };
-
-  useEffect(() => {
-    client.fetch(`*[_type == "user"]`)
-    // .then(data => console.log(data))
-    // .catch(error => console.log(error))
-
-    // getFireBaseData();
-  }, [])
+  
 
   const getFireBaseData = async () => {
     const querySnapshot = await getDocs(collection(db, "feed"));

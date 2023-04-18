@@ -1,14 +1,30 @@
 import { Platform, SafeAreaView, StyleSheet, Text, View, Image, TouchableWithoutFeedback, FlatList } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import StoryWheel from '../../components/StoryWheel'
 import { colors, ScreenWidth } from '../../components/shared'
 import { images } from '../../assets/images'
 import { useNavigation } from '@react-navigation/native'
 import { FeedCard } from '../../components'
 import { postData } from './data'
+import { client } from '../../lib/client'
+import { getUserFeed } from '../../lib/data/getUserFeed'
 
 const Home = () => {
   const navigation = useNavigation();
+
+
+  // Getting Feed Data from Sanity
+  const [feedData, setFeedData] = useState([]);
+
+  useEffect(() => {
+    client.fetch(getUserFeed())
+      .then((data) => setFeedData(data))
+      .then((error) => console.log(error));
+
+  }, [])
+  
+
+  console.log(feedData[0]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,9 +45,9 @@ const Home = () => {
       <StoryWheel />
       <View style={{ width: "100%", height: 2, backgroundColor: "#F3F3F3"}} />
       <FlatList  
-        data={postData}
+        data={feedData}
         style={{flex: 1}}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         renderItem={({ item }) => (
           <FeedCard 
             item={item}

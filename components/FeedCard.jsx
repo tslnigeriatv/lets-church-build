@@ -18,7 +18,7 @@ const FeedCard = ({ item }) => {
           {/* Left Begins here */}
             <View style={styles.left}>
                 <Image
-                    source={item.profilePoto} 
+                    source={{ uri: item?.postedBy?.avatar?.url } }
                     resizeMode={"cover"}
                     style={{
                         width: 36,
@@ -27,11 +27,11 @@ const FeedCard = ({ item }) => {
                     }}
                 />
                 <View style={styles.leftTxt}>
-                    <Text style={{ fontSize: 13, fontFamily: "Montserrat_700Bold" }}>{item.name}</Text>
+                    <Text style={{ fontSize: 13, fontFamily: "Montserrat_700Bold" }}>{item?.postedBy?.name}</Text>
                     <View style={styles.leftTxtLower}>
-                        <Text style={{ color: "#333333", fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>{item.region}</Text>
+                        <Text style={{ color: "#333333", fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>{item?.region}</Text>
                         <Text style={{ marginHorizontal: 10 }}>{"•"}</Text>
-                        <Text style={{ color: "#333333", fontSize: 10, fontFamily: "Montserrat_600SemiBold", borderBottomColor: "#333333", borderBottomWidth: 0.1 }}>{item.timePosted}</Text>
+                        <Text style={{ color: "#333333", fontSize: 10, fontFamily: "Montserrat_600SemiBold", borderBottomColor: "#333333", borderBottomWidth: 0.1 }}>{item?.createdAt}</Text>
                     </View>
                 </View>
             </View>

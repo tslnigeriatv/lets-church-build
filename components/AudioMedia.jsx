@@ -6,7 +6,9 @@ import { Actionsheet, Center, useDisclose } from "native-base";
 import { images } from '../assets/images';
 import { colors, ScreenHeight, ScreenWidth } from './shared';
 import { formatDuration } from '../utils/utilities';
+import { urlFor } from '../lib/client';
 
+// imageThumbnail.asset.url
 
 const AudioMedia = ({ sermon }) => {
   const [sound, setSound] = useState(null);
@@ -28,7 +30,7 @@ const AudioMedia = ({ sermon }) => {
 
   useEffect(() => {
     if(String(position) === String(duration)) {
-      console.log("terms met");
+      // console.log("terms met");
     };
   }, [position])
 
@@ -51,7 +53,7 @@ const AudioMedia = ({ sermon }) => {
   async function loadSound() {
     try {
       const { sound } = await Audio.Sound.createAsync(
-        sermon.audio,
+        {uri: sermon.audioFile.asset.url},
         { shouldPlay: false }
       );
       setSound(sound);
@@ -107,7 +109,7 @@ const AudioMedia = ({ sermon }) => {
       }}>
         <View style={{ flexDirection: "row", justifyContent: "flex-start", alignItems: "center", flex: 0.7 }}>
           <Image 
-            source={sermon.thumbnail}
+            source={{uri: sermon.imageThumbnail.asset.url}}
             resizeMode={"cover"}
             style={{
               borderRadius: 8,
@@ -117,8 +119,8 @@ const AudioMedia = ({ sermon }) => {
           />
 
           <View style={{ marginLeft: 20 }}>
-            <Text style={{ fontSize: 14, fontFamily: "Montserrat_700Bold" }}>{sermon.songTitle}</Text>
-            <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>{sermon.artist}</Text>
+            <Text style={{ fontSize: 14, fontFamily: "Montserrat_700Bold" }}>{sermon.title}</Text>
+            <Text style={{ fontSize: 11, fontFamily: "Montserrat_600SemiBold" }}>{sermon.speaker}</Text>
           </View>
         </View>
         <View style={{ flex: 0.3, flexDirection: "row", justifyContent: "space-around", alignItems: "center" }}>
@@ -163,7 +165,7 @@ const AudioMedia = ({ sermon }) => {
                       shadowRadius: 1.41
                     }}>
                       <Image 
-                        source={sermon.thumbnail}
+                        source={{uri: sermon.imageThumbnail.asset.url}}
                         style={{ 
                           width: 213, 
                           height: 213, 
@@ -171,8 +173,8 @@ const AudioMedia = ({ sermon }) => {
                         }}
                       />
                     </View>
-                    <Text style={{ fontSize: 24, fontFamily: "Montserrat_700Bold", marginTop: 46 }}>{sermon.songTitle}</Text>
-                    <Text style={{ color: "#9E9894", fontSize: 14, fontFamily: "Montserrat_700Bold", marginTop: 14 }}>{sermon.artist}</Text>
+                    <Text style={{ fontSize: 24, fontFamily: "Montserrat_700Bold", marginTop: 46 }}>{sermon.title}</Text>
+                    <Text style={{ color: "#9E9894", fontSize: 14, fontFamily: "Montserrat_700Bold", marginTop: 14 }}>{sermon.speaker}</Text>
 
                     <View style={{ marginTop: 46, width: ScreenWidth, justifyContent: "center", alignItems: "center" }}>
                       {position !== null ? (

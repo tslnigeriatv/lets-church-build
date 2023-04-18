@@ -90,7 +90,7 @@ const PostCarousel = ({ item, type }) => {
         )}
         renderItem={({ item }) => (
           <Image
-            source={item.image}
+            source={{uri: item?.url}}
             resizeMode={"cover"}
             style={{
               width: ScreenWidth,
@@ -142,7 +142,7 @@ const PostCarousel = ({ item, type }) => {
                     />
                   </Pressable>
                 {/* Comments Section */}
-                <Text style={{ fontSize: 11 }}>{item.comments.length} Comments</Text>
+                <Text style={{ fontSize: 11 }}>{item?.comments?.length} Comments</Text>
               </View>
               <Pressable onPress={() => onShare("Share Me")}>
                 <Image 
@@ -194,8 +194,8 @@ const PostCarousel = ({ item, type }) => {
                       alignItems: "center", 
                       paddingBottom: 10
                     }}>
-                      {item?.comments.map((comment) => (
-                        <View key={comment.id}>
+                      {item?.comments?.map((comment) => (
+                        <View key={comment._id}>
                           <View style={{ 
                               flexDirection: "row", 
                               marginTop: 10,
@@ -208,7 +208,7 @@ const PostCarousel = ({ item, type }) => {
                                 marginRight: 15
                               }}>
                                 <Image 
-                                  source={comment.image}
+                                  source={{uri: comment?.postedBy?.avatar?.url}}
                                   resizeMode="cover"
                                   style={{ width: 29, height: 29, borderRadius: 29 / 2 }} />
                               </View>
@@ -218,7 +218,7 @@ const PostCarousel = ({ item, type }) => {
                                   fontSize: 10, 
                                   fontFamily: "Montserrat_700Bold", 
                                   marginLeft: 15
-                                }}>{comment?.friend}</Text>
+                                }}>{comment?.postedBy?.name}</Text>
                                   <Text style={{ 
                                     color: "#626262", 
                                     maxWidth: "60%", 
@@ -232,7 +232,7 @@ const PostCarousel = ({ item, type }) => {
                                     borderBottomRightRadius: 10,
                                     borderBottomLeftRadius: 3,
                                     borderTopRightRadius: 3
-                                  }}>{comment.message}</Text>
+                                  }}>{comment?.comment}</Text>
                               </View>
                             </View>
                         </View>

@@ -8,20 +8,20 @@ const image07 = require("../../data/images/photo7.jpg");
 
 export const postData = [
     {
-        id: 1,
+        _id: 1,
         name: "Nonye Chigozie",
         region: "Edo State",
         timePosted: "3 Days Ago", 
         excert: "Sometimes in life, we tend to forget where we're going and only see where we've been that we've been and that leaves us negative.",
         images: [
-            { image: image03, id: 1 },
-            { image: image02, id: 2 },
-            { image: image01, id: 3 }
+            { image: image03, _id: 1 },
+            { image: image02, _id: 2 },
+            { image: image01, _id: 3 }
         ], 
         likes: 166,
         comments: [
             {
-                id: 1,
+                _id: 1,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image02,
@@ -32,69 +32,69 @@ export const postData = [
         type: "me",
     },
     {
-        id: 2,
+        _id: 2,
         name: "Nonye Chigozie",
         region: "Edo State",
         timePosted: "3 Days Ago", 
         excert: "Sometimes in life, we tend to forget where we're going and only see where we've been that we've been and that leaves us negative.",
         images: [
-            { image: image07, id: 3 },
-            { image: image01, id: 4 },
-            { image: image02, id: 5 }
+            { image: image07, _id: 3 },
+            { image: image01, _id: 4 },
+            { image: image02, _id: 5 }
         ], 
         likes: 36,
         comments: [
             {
-                id: 1,
+                _id: 1,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image01,
                 type: "friend"
             },
             {
-                id: 2,
+                _id: 2,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image02,
                 type: "friend"
             },
             {
-                id: 3,
+                _id: 3,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image03,
                 type: "friend"
             },
             {
-                id: 4,
+                _id: 4,
                 friend: "Mariam Lucy",
                 message: "You are right...!",
                 image: image04,
                 type: "me"
             },
             {
-                id: 5,
+                _id: 5,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image01,
                 type: "friend"
             },
             {
-                id: 6,
+                _id: 6,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image02,
                 type: "friend"
             },
             {
-                id: 7,
+                _id: 7,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image03,
                 type: "friend"
             },
             {
-                id: 8,
+                _id: 8,
                 friend: "Mariam Lucy",
                 message: "You are right...!",
                 image: image04,
@@ -105,34 +105,34 @@ export const postData = [
         type: "friend"
     },
     {
-        id: 3,
+        _id: 3,
         name: "Nonye Chigozie",
         region: "Edo State",
         timePosted: "3 Days Ago", 
         excert: "Sometimes in life, we tend to forget where we're going and only see where we've been that we've been and that leaves us negative.",
         images: [
-            { image: image01, id: 6 },
-            { image: image02, id: 7 },
-            { image: image03, id: 3 }
+            { image: image01, _id: 6 },
+            { image: image02, _id: 7 },
+            { image: image03, _id: 3 }
         ], 
         likes: 266,
         comments: [
             {
-                id: 1,
+                _id: 1,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image07,
                 type: "friend"
             },
             {
-                id: 2,
+                _id: 2,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image06,
                 type: "me"
             },
             {
-                id: 3,
+                _id: 3,
                 friend: "Mariam Lucy",
                 message: "god is always good to whomever he pleases, all we have to do is live right.",
                 image: image05,
