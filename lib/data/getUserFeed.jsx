@@ -1,4 +1,4 @@
-export const getUserFeed = (userId) => {
+export const getUserFeed = () => {
     const feedData = `*[_type == "post"]{
         comments[]{
             comment,

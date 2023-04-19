@@ -78,7 +78,11 @@ const PostCarousel = ({ item, type }) => {
       {/* Slider */}
       <Animated.FlatList
         data={item.images}
-        style={{ width: ScreenWidth, maxHeight: 295 }}
+        style={{ 
+          width: ScreenWidth, 
+          maxHeight: 295 
+        }}
+        
         keyExtractor={(item) => Math.random() * 100}
         horizontal={true}
         scrollEventThrottle={35}
@@ -98,7 +102,9 @@ const PostCarousel = ({ item, type }) => {
             }}
           />
         )}
+
       />
+      <View style={{marginVertical: 50}} />
       {/* Post Interactions */}
         <View style={{ flexDirection: "row", justifyContent: "space-between", marginHorizontal: 20, marginVertical:10, marginBottom: 30, alignItems: "center" }}>
           <View style={{ flexDirection: "row", flex: 1 }}>
