@@ -9,7 +9,7 @@ const loadSong = (audios) => {
   addSong = audios;
 };
 
-const initializeAudio = async ({ index }) => {
+const initializeAudio = async (index) => {
   if (sound !== null) {
     await sound.unloadAsync();
     sound.setOnPlaybackStatusUpdate(null);

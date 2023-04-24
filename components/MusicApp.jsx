@@ -20,7 +20,13 @@ const MusicApp = ({ sermon, index }) => {
       const songSlider = useRef(null);
 
       TSLTrackPlayer.loadSong(playList);
+      console.log(playList);
       TSLTrackPlayer.initializeAudio(index);
+
+      useEffect(() => {
+        console.log("Duration", TSLTrackPlayer.getDuration());
+        console.log("Position", TSLTrackPlayer.getPosition());
+      }, [TSLTrackPlayer.getDuration(), TSLTrackPlayer.getPosition()])
 
       useEffect(() => {
         scrollX.addListener(({ value }) => {
