@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import NewPostCopy from "./screens/NewPostCopy";
 import { NativeBaseProvider } from "native-base";
 import AppRoute from "./navigation/AppRoute.jsx";
-import 'react-native-url-polyfill/auto';
+// import 'react-native-url-polyfill/auto';
 // Expo Google Fonts --- Montserrat
 
 import AppRoot from './navigation/AppRoute'
@@ -36,6 +36,7 @@ import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
 import { Community, HotDealsPopularCategories, KidsZone, NewPost, Saved, SavedDeals, SearchPopularCategories, Transaction } from './screens';
+import { MusicApp } from './components';
 
 export default function App() {
 
