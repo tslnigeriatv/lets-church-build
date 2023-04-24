@@ -4,6 +4,7 @@ let addSong = [];
 let sound = null;
 let playbackStatus = null;
 let currentAudioIndex = null;
+let isRepeatModeOn = false; // new variable to keep track of repeat mode
 
 const loadSong = (audios) => {
   addSong = audios;
@@ -18,14 +19,17 @@ const initializeAudio = async (index) => {
   const audioObject = addSong[index];
   sound = new Audio.Sound();
   await sound.loadAsync(audioObject?.url);
-  sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate); // set onPlaybackStatusUpdate function here
+  sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
 };
 
 const onPlaybackStatusUpdate = async (status) => {
-  // console.log("onPlaybackStatusUpdate called with status:", status);
-  if(status) return playbackStatus = status;
-  if (status.didJustFinish) {
-    await playNext();
+  if (status) playbackStatus = status;
+  if (playbackStatus.didJustFinish) {
+    if (isRepeatModeOn) { // repeat mode is on, play the same audio again
+      await sound.replayAsync();
+    } else { // repeat mode is off, play the next audio
+      await playNext();
+    }
   }
 };
 
@@ -47,34 +51,12 @@ const seekTo = async (seconds) => {
   await sound.setPositionAsync(seconds * 1000);
 };
 
-// const playNext = async () => {
-//   console.log("currentAudioIndex: ", currentAudioIndex);
-//   if (currentAudioIndex + 1 < addSong.length) {
-//     currentAudioIndex++;
-//     await initializeAudio();
-//     await sound.playAsync();
-//   } else {
-//     currentAudioIndex = 0;
-//     await initializeAudio();
-//     await sound.playAsync();
-//   }
-// };
-
-// const playPrevious = async () => {
-//   if (currentAudioIndex - 1 >= 0) {
-//     currentAudioIndex--;
-//     await initializeAudio();
-//     await sound.playAsync();
-//   } else {
-//     currentAudioIndex = addSong.length - 1;
-//     await initializeAudio();
-//     await sound.playAsync();
-//   }
-// };
+const setRepeatMode = (repeat) => {
+  isRepeatModeOn = repeat;
+};
 
 const getPosition = () => {
   if (playbackStatus !== null) {
-    // this returns the position in seconds
     return playbackStatus.positionMillis / 1000;
   } else {
     return null;
@@ -96,8 +78,7 @@ export const TSLTrackPlayer = {
   pauseAudio,
   stopAudio,
   seekTo,
-  // playNext,
-  // playPrevious,
+  setRepeatMode,
   getPosition,
   getDuration
 }

@@ -13,9 +13,11 @@ const MusicApp = ({ sermon, index }) => {
     const [notPlaying, setNotPlaying] = useState(true);
     const [duration, setDuration] = useState(TSLTrackPlayer.getDuration());
     const [position, setPosition] = useState(TSLTrackPlayer.getPosition());
+    const [sliderPosition, setSliderPosition] = useState();
+    const [sliderDuration, setSliderDuration] = useState();
 
-    console.log("duration: ", duration);
-    console.log("position: ", position);
+    console.log("duration: ", sliderPosition);
+    console.log("position: ", sliderDuration);
 
     const {
         isOpen,
@@ -34,7 +36,7 @@ const MusicApp = ({ sermon, index }) => {
         return () => clearInterval(interval);
 
       }, [position]);
-      useEffect(() => setDuration(TSLTrackPlayer.getDuration()), [duration]);
+      useEffect(() => setDuration(TSLTrackPlayer.getDuration()), [TSLTrackPlayer.getDuration()]);
       
       
       useEffect(() => TSLTrackPlayer.loadSong(playList), [playList]);
@@ -55,18 +57,29 @@ const MusicApp = ({ sermon, index }) => {
         });
       }, []);
 
-      // useEffect(() => {
-      //   scrollX.addListener(({ value }) => {
-      //     if((value / ScreenWidth) > index) {
-      //       if((currentIndex + 1) < playList.length) return TSLTrackPlayer.playAudio(currentIndex ? setCurrentIndex(currentIndex + 1) : index + 1);
-      //     } else {
-      //       if((value / ScreenWidth) < index) {
-      //         if((currentIndex - 1) >= 0) return TSLTrackPlayer.playAudio(currentIndex ? setCurrentIndex(currentIndex - 1) : index - 1);
-      //       }
-      //     }
-      //   });
-      // }, []);
-    
+     useEffect(() => {
+      const interval = setInterval(() => setSliderPosition(new Date(position * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).substring(0, 5)), 1000);
+      return () => clearInterval(interval);
+     }, []);
+
+     useEffect(() => {
+       const interval = setInterval(() => setSliderDuration(new Date((duration - position) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).substring(0, 5)), 1000);
+      return () => clearInterval(interval);
+     }, []);
+
+      const skipToNext = () => {
+        songSlider.current.scrollToOffset({
+          offset: (currentIndex + 1) * ScreenWidth,
+        });
+      };
+
+      const skipToPrevious = () => {
+        songSlider.current.scrollToOffset({
+          offset: (currentIndex - 1) * ScreenWidth,
+        });
+      };
+
+
   return (
     <>
         <Pressable onPress={onOpen}>
@@ -176,20 +189,21 @@ const MusicApp = ({ sermon, index }) => {
 
                     <View style={{ marginTop: 46, width: ScreenWidth, justifyContent: "center", alignItems: "center" }}>
                         <View style={{ flexDirection: "row", justifyContent: "space-around", alignItems: "center", width: "90%"}}>
-                          <Text>00:00</Text>
+                          <Text>{sliderPosition ? sliderPosition : "00:00"}</Text>
                                 <Slider
-                                    style={{ width: "100%", marginHorizontal: 20, borderRadius: 3 }}
+                                    style={{ width: "90%", marginHorizontal: 20, borderRadius: 3 }}
                                     minimumValue={0}
-                                    maximumValue={TSLTrackPlayer.getDuration() ? TSLTrackPlayer.getDuration() : 100}
+                                    maximumValue={duration ? duration : 100}
                                     minimumTrackTintColor="#F26A1D"
                                     thumbTintColor='#FFE4D4'
                                     maximumTrackTintColor="#EDEDED"
+                                    value={position}
                                     onSlidingComplete={async value => {
                                         await TSLTrackPlayer.seekTo(value);
                                         console.log("Value of seeked event: ", value);
                                     }}
                                 />
-                          <Text>00:00</Text>
+                          <Text>{sliderDuration ? sliderDuration : "00:00"}</Text>
                         </View>
                     </View>
 
@@ -207,6 +221,7 @@ const MusicApp = ({ sermon, index }) => {
                         (currentIndex - 1) >= 0 ? index-- : index = playList.length - 1;
                         setCurrentIndex(index);
                         TSLTrackPlayer.playAudio(index);
+                        skipToPrevious();
                       }}>
                         <Image 
                           source={images.Previous}
@@ -249,6 +264,7 @@ const MusicApp = ({ sermon, index }) => {
                         setCurrentIndex(index);
                         // TSLTrackPlayer.playAudio(currentIndex ? currentIndex + 1 : index + 1);
                         TSLTrackPlayer.playAudio(index);
+                        skipToNext();
                       }}>
                         <Image 
                           source={images.Next}
