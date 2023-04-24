@@ -57,15 +57,21 @@ const MusicApp = ({ sermon, index }) => {
         });
       }, []);
 
-     useEffect(() => {
-      const interval = setInterval(() => setSliderPosition(new Date(position * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).substring(0, 5)), 1000);
-      return () => clearInterval(interval);
-     }, []);
-
-     useEffect(() => {
-       const interval = setInterval(() => setSliderDuration(new Date((duration - position) * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}).substring(0, 5)), 1000);
-      return () => clearInterval(interval);
-     }, []);
+      useEffect(() => {
+        const interval = setInterval(() => {
+          const newPosition = new Date(position * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).substring(0, 5);
+          setSliderPosition(newPosition);
+        }, 1000);
+        return () => clearInterval(interval);
+      }, [position]);
+      
+      useEffect(() => {
+        const interval = setInterval(() => {
+          const newDuration = new Date((duration - position) * 1000).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).substring(0, 5);
+          setSliderDuration(newDuration);
+        }, 1000);
+        return () => clearInterval(interval);
+      }, [duration, position]);      
 
       const skipToNext = () => {
         songSlider.current.scrollToOffset({
