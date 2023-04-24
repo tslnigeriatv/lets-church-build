@@ -1,6 +1,6 @@
 export const playList = [{
     id: 1,
-    artist: "Green Day",
+    artist: "Asake",
     songTitle: "His Unfailing Love",
     url: require("../assets/media/Asake.mp3"),
     artwork: require("../data/images/photo1.jpg")
@@ -56,7 +56,7 @@ export const playList = [{
 },
 {
     id: 9,
-    artist: "Light Song",
+    artist: "Moelogo",
     songTitle: "Love Only",
     url: require("../assets/media/Moelogo.mp3"),
     artwork: require("../data/images/photo5.jpg")

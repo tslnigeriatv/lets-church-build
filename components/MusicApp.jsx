@@ -10,7 +10,13 @@ import { TSLTrackPlayer } from './MusicPlayer';
 const MusicApp = ({ sermon, index }) => {
     const [like, setLike] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
-    console.log("currentIndex: ", currentIndex);
+    const [notPlaying, setNotPlaying] = useState(true);
+    const [duration, setDuration] = useState(TSLTrackPlayer.getDuration());
+    const [position, setPosition] = useState(TSLTrackPlayer.getPosition());
+
+    console.log("duration: ", duration);
+    console.log("position: ", position);
+
     const {
         isOpen,
         onOpen,
@@ -19,22 +25,47 @@ const MusicApp = ({ sermon, index }) => {
       const scrollX = useRef(new Animated.Value(0)).current;
       const songSlider = useRef(null);
 
-      TSLTrackPlayer.loadSong(playList);
-      console.log(playList);
-      TSLTrackPlayer.initializeAudio(index);
 
       useEffect(() => {
-        console.log("Duration", TSLTrackPlayer.getDuration());
-        console.log("Position", TSLTrackPlayer.getPosition());
-      }, [TSLTrackPlayer.getDuration(), TSLTrackPlayer.getPosition()])
+        const interval = setInterval(() => {
+          setPosition(TSLTrackPlayer.getPosition());
+        }, 1000)
 
+        return () => clearInterval(interval);
+
+      }, [position]);
+      useEffect(() => setDuration(TSLTrackPlayer.getDuration()), [duration]);
+      
+      
+      useEffect(() => TSLTrackPlayer.loadSong(playList), [playList]);
+      useEffect(() => {
+        const init = async () => {
+          await TSLTrackPlayer.initializeAudio(currentIndex ? currentIndex : index);
+        }
+        init();
+      }, [index, currentIndex]);
+
+
+      // Am currently trying to detect which direction the slider is going left? or right?
       useEffect(() => {
         scrollX.addListener(({ value }) => {
-            //   console.log(`ScrollX : ${value} | Device Width : ${ScreenWidth} `);
-              const index = Math.round(value / ScreenWidth);
-              setCurrentIndex(index);
+            setNotPlaying(true);
+            const index = Math.round(value / ScreenWidth);
+            setCurrentIndex(index);
         });
       }, []);
+
+      // useEffect(() => {
+      //   scrollX.addListener(({ value }) => {
+      //     if((value / ScreenWidth) > index) {
+      //       if((currentIndex + 1) < playList.length) return TSLTrackPlayer.playAudio(currentIndex ? setCurrentIndex(currentIndex + 1) : index + 1);
+      //     } else {
+      //       if((value / ScreenWidth) < index) {
+      //         if((currentIndex - 1) >= 0) return TSLTrackPlayer.playAudio(currentIndex ? setCurrentIndex(currentIndex - 1) : index - 1);
+      //       }
+      //     }
+      //   });
+      // }, []);
     
   return (
     <>
@@ -171,7 +202,12 @@ const MusicApp = ({ sermon, index }) => {
                           resizeMode={"contain"}
                         />
                       </Pressable>
-                      <Pressable>
+                      <Pressable onPress={() => {
+                        let index = currentIndex;
+                        (currentIndex - 1) >= 0 ? index-- : index = playList.length - 1;
+                        setCurrentIndex(index);
+                        TSLTrackPlayer.playAudio(index);
+                      }}>
                         <Image 
                           source={images.Previous}
                           style={{ width: 36, height: 19 }}
@@ -179,8 +215,11 @@ const MusicApp = ({ sermon, index }) => {
                         />
                       </Pressable>
                       {/* Play pause */}
-                      {true ? (
-                        <Pressable onPress={() => {}} style={{ padding: 5 }}>
+                      {!notPlaying ? (
+                        <Pressable onPress={ async () => {
+                          setNotPlaying(!notPlaying);
+                          await TSLTrackPlayer.pauseAudio();
+                        }} style={{ padding: 5 }}>
                           <Image 
                             source={images.Pause}
                             style={{
@@ -189,18 +228,11 @@ const MusicApp = ({ sermon, index }) => {
                             }}
                           />
                         </Pressable>
-                      ) : false ? (
-                        <Pressable onPress={() => {}} style={{ padding: 5 }}>
-                          <Image 
-                          source={images.Play}
-                          style={{
-                            width: 90,
-                            height: 90
-                          }}
-                          />
-                        </Pressable>
                       ) : (
-                        <Pressable onPress={() => {}} style={{ padding: 5 }}>
+                        <Pressable onPress={ async () => {
+                          setNotPlaying(!notPlaying);
+                          await TSLTrackPlayer.playAudio(currentIndex ? currentIndex : index);
+                        }} style={{ padding: 5 }}>
                           <Image 
                           source={images.Play}
                           style={{
@@ -210,7 +242,14 @@ const MusicApp = ({ sermon, index }) => {
                           />
                         </Pressable>
                       )}
-                      <Pressable>
+                      <Pressable onPress={() => {
+                        let index = currentIndex;
+                        (currentIndex + 1) < playList.length ? index++ : index = 0;
+                        // setNotPlaying(true);
+                        setCurrentIndex(index);
+                        // TSLTrackPlayer.playAudio(currentIndex ? currentIndex + 1 : index + 1);
+                        TSLTrackPlayer.playAudio(index);
+                      }}>
                         <Image 
                           source={images.Next}
                           style={{ width: 36, height: 19 }}

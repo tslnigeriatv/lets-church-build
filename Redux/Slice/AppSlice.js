@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    
+    audioDuration: 100,
+    audioPosition: 0
 }
 
 // export const getMovies = createAsyncThunk('data/getMovies', () => {
@@ -12,9 +13,12 @@ export const appSlice = createSlice({
   name: 'data',
   initialState,
   reducers: {
-    // setCategories: (state, action) => {
-    //     state.categories = action.payload;
-    // }
+    setAudioDuration: (state, action) => {
+      state.audioDuration = action.payload;
+    },
+    setAudioPosition: (state, action) => {
+      state.audioPosition = action.payload;
+    }
     // extraReducers: (builder) => {
     //   // Add reducers for additional action types here, and handle loading state as needed
     //   builder.addCase(fetchTvCategories.fulfilled, (state, action) => {
@@ -26,7 +30,8 @@ export const appSlice = createSlice({
 })
 // Action creators are generated for each case reducer function
 export const { 
-    
+  setAudioDuration,
+  setAudioPosition
  } = appSlice.actions
 
 export default appSlice.reducer;

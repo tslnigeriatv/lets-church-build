@@ -18,16 +18,16 @@ const initializeAudio = async (index) => {
   const audioObject = addSong[index];
   sound = new Audio.Sound();
   await sound.loadAsync(audioObject?.url);
-  sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
+  sound.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate); // set onPlaybackStatusUpdate function here
 };
 
 const onPlaybackStatusUpdate = async (status) => {
-  playbackStatus = status;
+  // console.log("onPlaybackStatusUpdate called with status:", status);
+  if(status) return playbackStatus = status;
   if (status.didJustFinish) {
     await playNext();
   }
 };
-
 
 const playAudio = async (index) => {
   currentAudioIndex = index;
@@ -47,29 +47,30 @@ const seekTo = async (seconds) => {
   await sound.setPositionAsync(seconds * 1000);
 };
 
-const playNext = async () => {
-  if (currentAudioIndex + 1 < addSong.length) {
-    currentAudioIndex++;
-    await initializeAudio();
-    await sound.playAsync();
-  } else {
-    currentAudioIndex = 0;
-    await initializeAudio();
-    await sound.playAsync();
-  }
-};
+// const playNext = async () => {
+//   console.log("currentAudioIndex: ", currentAudioIndex);
+//   if (currentAudioIndex + 1 < addSong.length) {
+//     currentAudioIndex++;
+//     await initializeAudio();
+//     await sound.playAsync();
+//   } else {
+//     currentAudioIndex = 0;
+//     await initializeAudio();
+//     await sound.playAsync();
+//   }
+// };
 
-const playPrevious = async () => {
-  if (currentAudioIndex - 1 >= 0) {
-    currentAudioIndex--;
-    await initializeAudio();
-    await sound.playAsync();
-  } else {
-    currentAudioIndex = addSong.length - 1;
-    await initializeAudio();
-    await sound.playAsync();
-  }
-};
+// const playPrevious = async () => {
+//   if (currentAudioIndex - 1 >= 0) {
+//     currentAudioIndex--;
+//     await initializeAudio();
+//     await sound.playAsync();
+//   } else {
+//     currentAudioIndex = addSong.length - 1;
+//     await initializeAudio();
+//     await sound.playAsync();
+//   }
+// };
 
 const getPosition = () => {
   if (playbackStatus !== null) {
@@ -81,10 +82,10 @@ const getPosition = () => {
 };
 
 const getDuration = () => {
-  if (playbackStatus !== null) {
+  if (playbackStatus !== null && playbackStatus.durationMillis !== NaN) {
     return playbackStatus.durationMillis / 1000;
   } else {
-    return null;
+    return 100;
   }
 };
 
@@ -95,8 +96,8 @@ export const TSLTrackPlayer = {
   pauseAudio,
   stopAudio,
   seekTo,
-  playNext,
-  playPrevious,
+  // playNext,
+  // playPrevious,
   getPosition,
   getDuration
 }
