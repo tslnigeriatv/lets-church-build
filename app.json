@@ -14,14 +14,20 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.petecoder.letsChurch"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.petecoder.letsChurch"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,7 +36,12 @@
       "ios",
       "android",
       "web"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d9cc9dea-eb33-46eb-8491-e764d71abf5b"
+      }
+    }
   },
   "plugins": [
     [

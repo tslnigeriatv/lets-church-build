@@ -8,6 +8,12 @@ import 'react-native-url-polyfill/auto';
 
 import AppRoot from './navigation/AppRoute'
 
+// Expo dev client for connecting to a native build
+import "expo-dev-client";
+
+
+
+
 import {
   useFonts,
   Montserrat_100Thin,
@@ -36,6 +42,7 @@ import { useEffect } from 'react';
 import { client } from './lib/client';
 import { userQuery } from './lib/data/getUser';
 import { Community, HotDealsPopularCategories, KidsZone, NewPost, Saved, SavedDeals, SearchPopularCategories, Transaction } from './screens';
+import Reels from './screens/OtherScreens/Reels';
 
 export default function App() {
 
@@ -67,7 +74,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <NativeBaseProvider>
-        <AppRoot />
+        <AppRoute />
       </NativeBaseProvider>
     </NavigationContainer>
   );

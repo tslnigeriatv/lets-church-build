@@ -933,3 +933,160 @@ export const userSearchedVideo = {
         },
     ]
 }
+
+
+// For Reels
+
+export const SearchData = [
+    {
+        id: 0,
+        images: [
+            require("./images/photo2.jpg"),
+            require("./images/photo4.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+        ]
+    },
+    {
+        id: 2,
+        images: [
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+            require("./images/photo2.jpg"),
+            require("./images/photo4.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+            
+        ]
+    },
+    {
+        id: 3,
+        images: [
+            require("./images/photo4.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/photo3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/photo2.jpg"),
+            require("./images/photo4.jpg"),
+            require("./images/exphoto2.jpg"),
+            require("./images/exphoto1.jpg"),
+            require("./images/exphoto3.jpg"),
+        ]
+    },
+
+];
+
+
+// Reels Video Data
+export const reelsVideosData = [
+    {
+        id: 1,
+        video: require("./videos/myshortVideo.mp4"),
+        title: "Peter School",
+        description: "This is a good description... Yo!!!",
+        likes: '250k',
+        isLiked: true,
+        postedBy: {
+            name: "tech_wizzdom",
+            photoURL: require("./images/photo1.jpg"),
+            followers: [
+                {
+                    id: 1,
+                    name: "DannyJ",
+                    photoURL: require("./images/photo1.jpg")
+                },
+                {
+                    id: 2,
+                    name: "JOY",
+                    photoURL: require("./images/photo3.jpg")
+                },
+                {
+                    id: 3,
+                    name: "Daniella",
+                    photoURL: require("./images/photo4.jpg")
+                },
+            ]
+        }
+    },
+    {
+        id: 2,
+        video: require("./videos/anotherShort.mp4"),
+        title: "Paula Pablo",
+        description: "Yeyeyeye!!! This is a good description...",
+        likes: '250k',
+        isLiked: false,
+        postedBy: {
+            name: "tech_wizzdom",
+            photoURL: require("./images/photo2.jpg"),
+            followers: [
+                {
+                    id: 4,
+                    name: "DannyJ",
+                    photoURL: require("./images/photo1.jpg")
+                },
+                {
+                    id: 3,
+                    name: "JOY",
+                    photoURL: require("./images/photo3.jpg")
+                },
+                {
+                    id: 2,
+                    name: "Daniella",
+                    photoURL: require("./images/photo4.jpg")
+                },
+            ]
+        },
+
+    },
+    {
+        id: 3,
+        video: require("./videos/myshortVideo.mp4"),
+        title: "Love Cure",
+        description: "I love you dear.",
+        likes: '330k',
+        isLiked: true,
+        postedBy: {
+            name: "tech_wizzdom",
+            photoURL: require("./images/photo3.jpg"),
+            followers: [
+                {
+                    id: 7,
+                    name: "DannyJ",
+                    photoURL: require("./images/photo1.jpg")
+                },
+                {
+                    id: 6,
+                    name: "JOY",
+                    photoURL: require("./images/photo3.jpg")
+                },
+                {
+                    id: 5,
+                    name: "Daniella",
+                    photoURL: require("./images/photo4.jpg")
+                },
+            ]
+        }
+    },
+]
+
+
+
+
+
+

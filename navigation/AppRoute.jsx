@@ -518,7 +518,7 @@ const AppRoot = () => {
   
 
   // let accessToken = "sfsdfafaf";
-  const [userToken, setUserToken] = useState("ffdsdgdgsg");
+  const [userToken, setUserToken] = useState("");
 
 
     return !userToken ? (

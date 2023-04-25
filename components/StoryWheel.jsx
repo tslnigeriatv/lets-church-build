@@ -31,14 +31,13 @@ const StoryWheel = () => {
       .fetch(getReelsData())
       .then((data) => {
         setReelsData(data);
-        // console.log(data);
       })
       .catch((error) => console.log(error));
 
     return () => {};
   }, []);
 
-  console.log(reelsData);
+//   console.log(reelsData);
 
   return (
     <FlatList
@@ -69,7 +68,7 @@ const StoryWheel = () => {
           >
             {item?.postedBy?._id !== userId ? (
               <Pressable
-                onPress={() => navigation.navigate("NewPost")}
+                onPress={() => navigation.navigate("Post")}
                 style={{
                   backgroundColor: "#F0F6F8",
                   width: "95%",

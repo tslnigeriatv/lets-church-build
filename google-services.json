@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "270880612153",
+    "project_id": "lets-church-build",
+    "storage_bucket": "lets-church-build.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270880612153:android:9b2a2a3e0858e68c0ad2e8",
+        "android_client_info": {
+          "package_name": "com.petecoder.letsChurch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "270880612153-ijr1c1odghepq261n6f05d84qhkua4ha.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.petecoder.letsChurch",
+            "certificate_hash": "e4d8c405aca114fb0bde0772b5203bf71c3f903d"
+          }
+        },
+        {
+          "client_id": "270880612153-mg0li8lgcd8qli2en7f6vavsgv7bhc7j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.petecoder.letsChurch",
+            "certificate_hash": "7084c3b2fc48ebbb0384feb9053914eea8b7c067"
+          }
+        },
+        {
+          "client_id": "270880612153-3ufhf1on4mj155t44t4chlu1stbv5dc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTuMtu7_EBLtDbmjtzFZwe4pr7fcIooVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "270880612153-3ufhf1on4mj155t44t4chlu1stbv5dc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
