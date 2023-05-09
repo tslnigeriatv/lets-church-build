@@ -5,7 +5,16 @@ import { images } from '../../assets/images';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-import { getAuth, signInWithRedirect, GoogleAuthProvider, createUserWithEmailAndPassword } from "firebase/auth";
+import { 
+  createUserWithEmailAndPassword,
+  getAuth,
+  FacebookAuthProvider,
+  signInWithCredential,
+
+} from "firebase/auth";
+
+import {firebase} from '../../lib/firebaseConfig';
+import { LoginManager, LoginButton, AccessToken } from 'react-native-fbsdk-next';
 
 
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
@@ -34,6 +43,35 @@ const RenderAuthFooter = ({ type, method }) => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
   }, []);
+
+  const signInWithFacebook = async () => {
+      // Attempt login with permissions
+      const result = await LoginManager.logInWithPermissions(['user_photos', 'user_birthday']);
+
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+    // Sign-in the user with the credential
+    user_signed_in = signInWithCredential(facebookCredential);
+
+    user_signed_in.then((user) => {
+      console.log(user);
+    }).catch((error) => {
+      console.log(error);
+    })
+  }
+  
 
 
   const onGoogleButtonPress = async () => {
@@ -95,7 +133,7 @@ const RenderAuthFooter = ({ type, method }) => {
           
         <View style={{ width: "100%", alignItems: "center", marginTop: 20 }}>
           <View style={{ maxWidth: ScreenWidth/2, flexDirection: "row", justifyContent: 'space-around', alignItems: "center"}}>
-            <TouchableWithoutFeedback>
+            <TouchableWithoutFeedback onPress={signInWithFacebook}>
               <Image source={images.Facebook} resizeMode={"contain"} style={{ width: 61, height: 61 }} />
             </TouchableWithoutFeedback>
   
@@ -111,6 +149,8 @@ const RenderAuthFooter = ({ type, method }) => {
             </TouchableWithoutFeedback>
           </View>
         </View>
+
+        
       </View>
     )
   } else {

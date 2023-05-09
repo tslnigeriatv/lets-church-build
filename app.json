@@ -15,7 +15,15 @@
       "**/*"
     ],
     "plugins": [
-      "@react-native-google-signin/google-signin"
+      "@react-native-google-signin/google-signin",
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "233145049300213",
+          "clientToken": "395bc504c9a1a56e0472b221ca18a98c",
+          "displayName": "letschurchapp"
+        }
+      ]
     ],
     "ios": {
       "supportsTablet": true,
